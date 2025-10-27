@@ -1,0 +1,1430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" dir="ltr">
+<head lang="ru">
+<title>Моя страница</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Для Windows и Android
+<link rel="manifest" href="images/manifest.json">
+<link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="images/favicon-192x192.png" sizes="192x192"> -->
+<!-- Для iOS
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" sizes="180x180"> -->
+<!-- Saved from https://www.falsepositives.com/index.php/2011/01/31/adding-favicons-for-moble-safari-web-sites-ipodiphoneipad/
+The fallowing minimizes the status bar that is displayed at the top of the screen on iPhone OS, making it more like a “a native application” by using a meta tag “apple-mobile-web-app-status-bar-style”, or display web content in full-screen mode.
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+-->
+<!-- Для MacOS
+<link rel="mask-icon" href="images/favicon.svg"> -->
+<!-- Для Windows
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+ -->
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" sizes="any">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+
+
+<style type="text/css">
+<!--
+/* портретная ориентация */
+/*@media screen and (orientation:portrait) {*/
+    /* Стили для портретной */
+  /* body { background: url(Nika.png) no-repeat 100% 100% fixed;}
+}*/
+/* горизонтальная ориентация */
+/*@media screen and (orientation:landscape) {*/
+    /* стили для горизонтальной */
+   /* body { background: url(Nika2.png) no-repeat 90% 0% fixed;}
+    }*/
+body {background: url(images/Nika.png) no-repeat 69% 100% fixed; background-size: contain; font-family: Verdana, Arial, sans-serif
+}
+a {text-decoration: none; color: white; font: 12px Verdana, Arial, sans-serif
+}
+a:hover {color: cyan
+}
+a.e {text-decoration: none; color: #0000ff; font: 20px 'Times New Roman'; width: auto; height: 23px
+}
+.btn {border-top: #7777ff 1px solid; border-right: #333333 1px solid; border-bottom: #333333 1px solid; border-left: #7777ff 1px solid; cursor: default; text-align: center; padding-bottom: 2px
+}
+button, input, textarea, select {font: menu
+}
+.quot {font: 14px 'Segoe UI Light', 'Calibri light', 'Candara light', Arial, 'Century Gothic'; color: #ffffff; text-align: right; border-top: #cccccc 1px solid; margin-top: 3px
+}
+-->
+</style>
+<script type="text/javascript" language="JavaScript">
+<!--
+if(navigator.appName=="Microsoft Internet Explorer") var IE = new Object()
+if(navigator.appName=="Netscape") var N = new Object()
+if(navigator.appName=="Opera") var O = new Object()
+
+// Начало первой части напоминателя
+
+var warning = "  Добавлять, удалять или изменять записи в программе «Напоминатель» можно независимо от её расположения, но сохранять изменения можно лишь в том случае, если эта страница находится на жёстком диске вашего компьютера, а не, например, в интернете.\n\n  Поскольку для сохранения изменений требуется доступ к файловой системе компьютера, здесь используются так называемые элементы ActiveX. После первого нажатия кнопки «Сохранить» появится стандартное в таких случаях предупреждение:\n\n«Страница может содержать опасные программы (элементы ActiveX). Рекомендуется не выполнять их. Разрешить их выполнение?».\n\n  Имеется в виду, что некий злоумышленник может написать вредоносную программу с использованием элементов ActiveX и вставить её в интернет страницу. Такого рода опасность, конечно, исключить нельзя. Однако в данном случае, если вы хотите внести изменения в базу данных «Напоминателя», вам ничего не остаётся, как рискнуть и дать разрешение на выполнение программы, поверив на слово, что намеренно здесь опасности не создаётся. Данное разрешение действует до тех пор, пока вы находитесь на этой странице. Если вы покинете её, а затем вернётесь, или нажмёте кнопку браузера «Обновить» (то же действие вызывается кнопкой F5 на клавиатуре), то вам снова придётся давать разрешение."
+
+var now = new Date()
+var nowDay = now.getDate()
+var nowMonth = now.getMonth()+1
+var nowYear = now.getYear()
+var nowTime = now.getTime()
+var enM = new Array('0','January','February','March','April','May','June','July','August','September','October','November','December')
+var ruM = new Array('0','января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря')
+
+var remind, nt, ntc, spisok
+window.onload=function(){
+document.getElementById("DB").value=document.getElementById("DB").defaultValue
+document.getElementById("editor").style.filter="progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=lightskyblue,endColorStr=#3773a3)"
+dataOutput()
+placeToday()
+nt = document.getElementById("note")
+ntc = document.getElementById("notecont")
+//setToday()
+}
+
+window.onresize=function(){
+placeToday()
+}
+
+var splitString
+
+function dataOutput(){
+document.getElementById("datadisplay").innerHTML=""
+var dbString = new String(document.getElementById("DB").value)
+splitString = dbString.split("|")
+splitString = splitString.sort()
+var subconcat = "."
+var concat = '<form><input type="reset" id="listCleaner" style="display: none"><ol>'
+var collect = ""
+remind = new Array(splitString)
+remind[0]=""
+for(var i=1; i<splitString.length; i++){
+remind[i] = splitString[i]
+var splitSubstring = remind[i].split("~")
+remind[i] = new Array(splitSubstring)
+for(var j=0; j<splitSubstring.length; j++){
+remind[i][j] = splitSubstring[j]
+}
+var remD = remind[i][1]
+remD = remD.replace(/^0/,"")
+var remM = remind[i][0]
+if(N||O) remM = remM.replace(/\n/,"")
+else remM = remM.replace(/\r\n/,"")
+remM = remM.replace(/^0/,"")
+
+var remY = nowYear
+var nowY = nowYear
+if(nowYear<1900){
+remY=nowYear+1900
+nowY=nowYear+1900
+}
+if (nowDay > remD && nowMonth >= remM || nowDay <= remD && nowMonth > remM) remY=remY+1
+var remdate = new Date(enM[remM]+" "+remD+" "+remY)
+var remtime = remdate.getTime()
+var remain = Math.floor((remtime-nowTime) / 86400000)+1
+var goda = ""
+var passed = ""
+var happened = ""
+if(remind[i][2]!=""){
+goda = remind[i][2]+" года"
+var let = ""
+var age = new String(nowY-remind[i][2])
+var l = age.length
+var c = age.charAt(l-1)
+var l2c = age.substr(l-2,l)
+if (c==1 && l2c!=11){
+let = " год"
+}
+else {
+if (c>=2 && c<=4 && l2c!=12 && l2c!=13 && l2c!=14){
+let = " года"
+}
+else {
+let = " лет"
+}
+}
+if (age>0) {
+passed = age+let+" назад"
+}
+else {
+passed = "Через "+(age*-1)+let
+}
+}
+if(remD.length==1) remD="&nbsp;&nbsp;"+remD
+happened = '<span style="padding-left: 9px; cursor: default; font-weight: 700" title="'+passed+'">'+remD+' '+ruM[remM]+' '+goda+'</span>'
+var libg = '<li style="padding: 0px 7px; background: #ffffff">'
+if(i==1) libg = '<li style="display: none">'
+if(remM>2 && remM<6) libg = '<li style="padding: 0px 7px; background: #ccffcc">'
+if(remM>5 && remM<9) libg = '<li style="padding: 0px 7px; background: #ffcccc">'
+if(remM>8 && remM<12) libg = '<li style="padding: 0px 7px; background: #fff999">'
+concat+=libg+'<input type="radio" id="rad'+i+'" name="rad" /><label for="rad'+i+'">'+happened+' '+remind[i][3]+' '+remind[i][4]+'</label></li>'
+if(remain<=remind[i][5]){
+collect+='<li><span style="font: small-caps 17px Arial">'+happened+'</span> '+remind[i][3]+' '+remind[i][4]+'</li>'
+}
+}
+concat = concat.replace(/amp;/gi,"&")
+
+document.getElementById("datadisplay").innerHTML=concat+'</ol></form>'
+if(collect!=""){
+collect=collect.replace(/amp;/gi,"&")
+document.getElementById("today2").innerHTML='<ul type="circle">'+collect+'</ul>'
+}
+var allInp=document.getElementsByTagName("input")
+spisok = new Array()
+spisok[0]=""
+var n=1
+for(var r=0; r<allInp.length; r++){
+if(allInp[r].name=="rad"){
+spisok[n]=allInp[r]
+n++
+}
+}
+}
+
+var ww, wh
+function placeToday(){
+ww=document.body.clientWidth
+var tds=document.getElementById("today").style
+var tds2=document.getElementById("today2").style
+if(IE){
+wh=document.documentElement.offsetHeight
+}
+else{
+wh=self.innerHeight
+}
+document.getElementById("editor").style.left=((ww - 681)/2)+"px"
+if(document.getElementById("today2").innerHTML!=""){
+tds.height=document.getElementById("today2").clientHeight+"px"
+tds.left=((ww - document.getElementById("today").clientWidth)/2)+"px"
+tds.top=((wh - document.getElementById("today").clientHeight)/2)+"px"
+if(IE){
+tds.filter="alpha(opacity=69)"
+//tds.border="blue 5px double"
+//tds2.filter="dropshadow(offx=1,offy=1,color=#aa0000,positive=1)"
+}
+else{
+tds.opacity=".69"
+}
+tds.visibility="visible"
+document.getElementById("exclaim").style.visibility="visible"
+}
+}
+
+var i
+document.onclick=function(e){
+if(IE) eve=event.srcElement
+else eve=e.target
+if(eve.name=="rad" || eve.id=="newEntry"){
+if(!IE) alert("Внести изменения в список можно только открыв эту страницу в браузере «Internet Explorer»")
+else{
+if(eve.id!="newEntry") document.getElementById("del").disabled=false
+document.getElementById("repl").disabled=true
+document.getElementById("add").disabled=true
+for(i=1; i<spisok.length; i++){
+if(spisok[i].checked==false){
+continue
+}
+else{
+document.getElementById("dragbar").innerHTML = "Изменение записи"
+document.getElementById("den").options[Number(remind[i][1])].selected = true
+document.getElementById("mes").options[remind[i][0]].selected = true
+document.getElementById("god").value = remind[i][2]
+          var delAmp = remind[i][3]
+          delAmp = delAmp.replace(/amp;/gi,"&")
+document.getElementById("comment").value = delAmp
+          var delAtags = remind[i][4]
+          delAtags = delAtags.replace('<a class="e" href="mailto:','')
+          delAtags = delAtags.replace('">@</a>','')
+document.getElementById("email").value = delAtags
+document.getElementById("pred").value = remind[i][5]
+break
+}
+}
+document.getElementById("editor").style.display=""
+document.getElementById("editor").style.top=(document.documentElement.scrollTop+event.y+7)+"px"
+}
+}
+}
+
+function editDB(chto){
+if(document.getElementById("den").selectedIndex=="0" || document.getElementById("mes").selectedIndex=="0"){
+alert ("Пожалуйста, введите дату.")
+}
+else{
+document.getElementById("comment").value = document.getElementById("comment").value.replace(/\&/g,"amp;")
+if(document.getElementById("email").value != "") document.getElementById("email").value = '<a class="e" href="mailto:'+document.getElementById('email').value+'">@</a>'
+if(document.getElementById("pred").value=="") document.getElementById("pred").value=0
+document.getElementById("comment").value = document.getElementById("comment").value.replace(/\~|\|/g,"")
+var ms = document.getElementById("mes").options.selectedIndex
+if(ms<10) ms = "0"+ms
+var dn = document.getElementById("den").options.selectedIndex
+if(dn<10) dn = "0"+dn
+var itemLine = ms+'~'+dn+'~'+document.getElementById("god").value+'~'+document.getElementById("comment").value+'~'+document.getElementById("email").value+'~'+document.getElementById("pred").value
+for(var l=1; l<remind.length; l++){
+remind[l] = remind[l].join("~")
+}
+if(chto=="repl"){
+remind[i]="\n"+itemLine
+}
+if(chto=="del"){
+delete remind[i]
+}
+var newDatabase = remind.join("|")
+newDatabase = newDatabase.replace(/\|$/,"")
+newDatabase = newDatabase.replace("||","|")
+document.getElementById("DB").value=newDatabase
+if(chto=="add"){
+document.getElementById("DB").value+="|\n"+itemLine
+}
+document.getElementById("saveDB").disabled=false
+dataOutput()
+clAll()
+}
+}
+
+function clAll(){
+document.getElementById('cleaner').click()
+if(document.getElementById("listCleaner")!=null) document.getElementById("listCleaner").click()
+document.getElementById("dragbar").innerHTML = "Новая запись"
+document.getElementById("del").disabled=true
+document.getElementById("repl").disabled=true
+document.getElementById("add").disabled=true
+}
+
+function switchButton(){
+if(document.getElementById("del").disabled==false) document.getElementById("del").disabled=true
+if(document.getElementById("add").disabled==true) document.getElementById("add").disabled=false
+for(var q=1; q<spisok.length; q++){//2
+if(document.getElementById("repl").disabled==true && spisok[q].checked==true) document.getElementById("repl").disabled=false
+}
+}
+
+// Начало всплывающего комментария
+
+/* Если на странице есть элементы с атрибутом disabled="disabled",
+то при быстром прохождении курсора над ними выдаётся сообщение об ошибке.
+Чтобы избежать сообщения об ошибке нужна нижеследующая функция
+window.onerror=function(){
+return true
+}
+*/
+
+/* // Эта часть уже есть выше. Здесь оставлена на случай копирования на новую страницу.
+var nt, ntc
+window.onload=function(){
+nt = document.getElementById("note")
+ntc = document.getElementById("notecont")
+}
+*/
+document.write('<div id="notecont" style="position: absolute; top: -399px; text-align: justify; z-index: 11">'+
+'<div id="note" style="font: menu; background: lightyellow; border: 1px solid #c0c0c0; border-radius: 4px; color: #333333; '+
+'position: absolute; padding: 5px"></div></div>')
+
+var eve, ttl
+
+function mouseX(evt){
+if(!evt) evt=window.event
+
+if(N) eve=evt.target
+else eve=evt.srcElement
+
+if(evt.pageX) return evt.pageX
+else if(evt.clientX)
+return evt.clientX+(document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft)
+else return 0
+}
+
+function mouseY(evt){
+if(!evt) evt=window.event
+if(evt.pageY) return evt.pageY
+else if(evt.clientY)
+return evt.clientY+(document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop)
+else return 0
+}
+
+document.onmouseover=function(evt){
+if(!evt) evt=window.event
+if(N) eve=evt.target
+else eve=evt.srcElement
+
+if(document.getElementById){
+var sx, sy, x, y
+
+if(document.documentElement && document.documentElement.clientHeight){
+sx=document.documentElement.clientWidth
+sy=document.documentElement.clientHeight
+}
+else if(self.innerHeight){
+sx=self.innerWidth
+sy=self.innerHeight
+}
+else if(document.body){
+sx=document.body.clientWidth
+sy=document.body.clientHeight
+}
+else{
+sx=0
+}
+
+var mx=parseInt(mouseX(evt))
+var my=parseInt(mouseY(evt))
+
+if(ntc!=null) ntc.style.width="299px"
+
+ttl=""
+
+if(eve.tagName!="BODY" && eve.tagName!="HTML"){
+
+/*Чтобы показать примечание в svg, нужно сразу после открывающего тега <svg> поместить теги <title>Примечание</title><desc/>*/
+if(eve.tagName=="svg" && eve.childNodes[0].tagName=="title"){
+if(eve.childNodes[0].innerHTML!="") eve.childNodes[1].innerHTML = eve.childNodes[0].innerHTML
+ttl = eve.childNodes[1].innerHTML
+eve.childNodes[0].innerHTML=""
+}
+if(eve.parentElement.tagName=="svg" && eve.parentElement.childNodes[0].tagName=="title" || eve.parentElement.tagName=="g" && eve.parentElement.parentElement.childNodes[0].tagName=="title"){
+if(eve.parentElement.childNodes[0].innerHTML!="") eve.parentElement.childNodes[1].innerHTML = eve.parentElement.childNodes[0].innerHTML
+ttl = eve.parentElement.childNodes[1].innerHTML
+eve.parentElement.childNodes[0].innerHTML=""
+}
+
+if(eve.parentElement.parentElement.hasAttribute("title")){
+if(eve.parentElement.parentElement.title!="") eve.parentElement.parentElement.setAttribute("info",eve.parentElement.parentElement.title)
+ttl=eve.parentElement.parentElement.getAttribute("info")
+eve.parentElement.parentElement.title=""
+}
+if(eve.parentElement.hasAttribute("title")){
+if(eve.parentElement.title!="") eve.parentElement.setAttribute("info",eve.parentElement.title)
+ttl=eve.parentElement.getAttribute("info")
+eve.parentElement.title=""
+}
+if(eve.hasAttribute("title")){
+if(eve.title!="") eve.setAttribute("info",eve.title)
+ttl=eve.getAttribute("info")
+eve.title=""
+}
+}
+
+if(ttl!="" && ntc!=null){
+nt.innerHTML = ttl
+//ntc.style.width=nt.offsetWidth+"px"
+var dx=nt.offsetWidth
+var dy=nt.offsetHeight
+
+x=mx
+if(x+dx>sx)
+x=sx-dx
+
+if(O) wh=document.body.clientHeight+document.documentElement.scrollTop
+else wh=sy+document.documentElement.scrollTop
+y=my+19
+if(y+dy>wh)
+y=my-dy-19
+
+ntc.style.left=(x)+"px"
+ntc.style.top=(y)+"px"
+
+}
+else{
+if(ntc!=null) ntc.style.left="-599px"
+}
+}
+}
+
+// Окончание всплывающего комментария
+
+document.onkeypress=function(){
+eve=event.srcElement
+if(eve.tagName=="TEXTAREA" || eve.tagName=="INPUT"){
+if(event.keyCode==124 || event.keyCode==126){
+alert("Извините, символы «|» и «~» не могут быть использованы в вашем тексте, поскольку они выбраны в качестве разделителей элементов массива в сценарии этой программы.")
+return false
+}
+}
+}
+
+var bb, ii, cc, qq, stst
+bb=ii=cc=qq=stst=0
+function format(i){
+if (document.selection.type == "Text") {
+var txt = document.selection.createRange()
+
+if (i=="st" && stst!=1){
+txt.text=txt.text+"&#769;"
+stst=1
+}
+if (i=="q" && qq!=1){
+txt.text="«"+txt.text+"»"
+qq=1
+}
+if (i=="b" && bb!=1){
+txt.text="<b>"+txt.text+"</b>"
+bb=1
+}
+if (i=="i" && ii!=1){
+txt.text="<i>"+txt.text+"</i>"
+ii=1
+}
+if (i=="c" && cc!=1){
+txt.text='<span style="color: '+document.getElementById('clr').options[document.getElementById('clr').selectedIndex].style.background+'">'+txt.text+'</span>'
+cc=1
+}
+switchButton()
+}
+else alert("Текст не выделен.")
+}
+
+//Начало блока из 3-х функций для drag&drop
+
+var dragging = false
+var cliX, cliY
+if(IE){
+
+document.onmousedown=function() {
+eve=event.srcElement
+if (eve.id=="dragbar" || eve.id=="dragbar2"){
+cliX = event.x-document.getElementById("editor").offsetLeft
+cliY = event.y-document.getElementById("editor").offsetTop
+dragging = true
+}
+if(eve.className=="btn" && eve.disabled==false){
+eve.style.borderLeft="#333333 1px solid"
+eve.style.borderTop="#333333 1px solid"
+eve.style.borderRight="#7777ff 1px solid"
+eve.style.borderBottom="#7777ff 1px solid"
+}
+}
+
+document.onmousemove=function() {
+if (dragging) {
+document.getElementById("editor").style.left = (event.x-cliX)+"px"
+document.getElementById("editor").style.top = (event.y-cliY)+"px"
+return false
+}
+}
+
+document.onmouseup=function() {
+eve=event.srcElement
+dragging = false
+if(eve.className=="btn" && eve.disabled==false){
+eve.style.borderLeft="#7777ff 1px solid"
+eve.style.borderTop="#7777ff 1px solid"
+eve.style.borderRight="#333333 1px solid"
+eve.style.borderBottom="#333333 1px solid"
+}
+}
+
+}
+//Конец блока из 3-х функций для drag&drop
+
+var pn = this.location.toString()
+var ot1 = pn.lastIndexOf(":")-1
+var pathOrig1 = pn.substring(ot1,99)
+var ot2 = pn.lastIndexOf("/")+1
+var filename1 = pn.substring(ot2,99)
+var filename = unescape(filename1)
+var pathOrig = unescape(pathOrig1)
+
+var n = 0
+function saveOnHD(){
+if(n==0){
+alert(warning)
+n=1
+}
+var fso = new ActiveXObject("Scripting.FileSystemObject")
+var f = fso.OpenTextFile(pathOrig,1,false)
+var scan = f.readall()
+var rewrite = scan.replace(document.getElementById("DB").defaultValue,document.getElementById("DB").value)
+f.Close()
+
+f = fso.OpenTextFile(pathOrig,2,true)
+f.Write(rewrite)
+f.Close()
+
+document.getElementById("DB").defaultValue = document.getElementById("DB").value
+clAll()
+}
+
+window.onunload=function(){
+if(IE && document.getElementById("DB").value!=document.getElementById("DB").defaultValue){
+var saveornot = confirm("В список событий программы «Напоминатель» были внесены изменения. Сохранить их?")
+if(saveornot==true){
+saveOnHD()
+}
+}
+}
+
+// Окончание первой части напоминателя
+
+
+// Начало цитаты дня
+
+var today_obj=new Date()
+var today_date=today_obj.getDate()
+var tips=new Array()
+tips[1]='Bonis nocet, cui malis parcit.<div class="quot">Кто щадит злых, вредит добрым.</div>'
+tips[2]='Omnia vincit amor, et nos cedamus amori.<div class="quot">Всё побеждает любовь — покоримся и мы любви.<br /><small>Вергилий. <span title="Пастушеские стихи">«Буколики»</span>.</small></div>'
+tips[3]='Donec eris felix, multos numerabis amicos, tempora si fuerint nubila, solus eris.<div class="quot">Пока ты будешь счастлив — будет много друзей у тебя. А наступят печальные дни — окажешься ты одинок.</div>'
+tips[4]='Nosce te ipsum (gnothi seayton).<div class="quot">Познай себя.</div>'
+tips[5]='Sublata causa, tollitur morbus (effectus).<div class="quot">Устраните причину, тогда пройдёт и болезнь (следствие).</div>'
+tips[6]='Vanitas vanitatum et omnia vanitas.<div class="quot">Суета сует и всё суета.<br /><small>Экклезиаст, 1, 2.</small></div>'
+tips[7]='Honeste vivere, alterum non laedere, suum cuique tribuere — juris praecepta sunt.<div class="quot">Честно жить, ближнего не оскорблять, каждому своё воздавать — таковы предписания закона.<br /><small>Ульпиан. Этими словами римляне формулировали сущность права.</small></div>'
+tips[8]='Veritas odium parit.<div class="quot">Правда родит ненависть.</div>'
+tips[9]='Satius est rideri, quam derideri.<div class="quot">Лучше давать повод к смеху, чем к насмешкам.</div>'
+tips[10]='Amicus cognoscitur amore, <span title="Ex more — согласно обычаю.">more</span>, ore, re.<div class="quot">Друг познаётся по любви, нраву, речам, делам.</div>'
+tips[11]='Alea jacta est!<div class="quot">"Жребий брошен!"<br /><small>Слова Юлия Цезаря перед переходом Рубикона.</small></div>'
+tips[12]='Beatius est magis dare quam accipere.<div class="quot">Счастлив тот, кто больше даёт, чем получает.</div>'
+tips[13]='Vae soli.<div class="quot">Горе одинокому.<br /><small> Экклезиаст, 4,10.</small></div>'
+tips[14]='Ad majorem Dei gloriam.<div class="quot" title="To God&#39;s greater glory (Jesuits&#39; motto)">К вящей славе божьей.<br /><small>Принцип-девиз ордена иезуитов.</small></div>'
+tips[15]='An nescis, mi fili, quantilla prudentia mundus regatur?<div class="quot">Сын мой, разве ты не знаешь, как мало надо ума, чтобы управлять миром?<br /><small title="(лат. Iulius PP. III; в миру Джованни Мария Чокки дель Монте, итал. Giovanni Maria Ciocchi del Monte; (10 сентября 1487 — 23 марта 1555) — Папа Римский с 7 февраля 1550 года по 23 марта 1555 года.">Папа Юлий III</small></div>'
+tips[16]='Audi, vide, tace, si vis vivere in pace.<div class="quot">Слушай, смотри и молчи, если хочешь жить в мире.</div>'
+tips[17]='Beneficium accipere, libertatem vendere.<div class="quot">Принять благодеяние значит продать свободу.<br /><small>Публилий Сир</small></div>'
+tips[18]='Bona facile mutantur in pejus.<div class="quot">Добро легко обратить во зло.</div>'
+tips[19]='De omnibus dubitandum.<div class="quot" title="Everything must be doubted.">Всё подвергай сомнению.<br /><small>Сократ (Декарт)</small></div>'
+tips[20]='Bonitas in suos, justitia in omnes.<div class="quot">Доброта к своим, справедливость ко всем остальным.</div>'
+tips[21]='Ceterum censeo Carthaginem esse delendam.<div class="quot">Впрочем, я полагаю, что Карфаген должен быть разрушен.<br /><small>Катон-старший</small></div>'
+tips[22]='Cibi, potius, somni, venus omnia moderata sint.<div class="quot">Пища, питьё, сон, любовь — пусть всё будет умеренным.<br /><small>Гиппократ</small></div>'
+tips[23]='Deus conservat omnia.<div class="quot">Бог сохраняет всё.</div>'
+tips[24]='Amor omnibus idem.<div class="quot">Любовь у всех одна.</div>'
+tips[25]='Exceptio probat regulam. Probatum est.<div class="quot">Исключение подтверждает правило. Испытано.</div>'
+tips[26]='Natio fas est scire heroes.<div class="quot">Народ должен знать своих героев.</div>'
+tips[27]='Salus populi — suprema lex.<div class="quot">Благо народа — высший закон.</div>'
+tips[28]='Ad infinitum.<div class="quot">До бесконечности.</div>'
+tips[29]='Omne ignotum pro magnifico est.<div class="quot">Всё неизвестное кажется значительным.</div>'
+tips[30]='Omnia mutantur, nihil interit.<div class="quot">Всё меняется, ничего не исчезает.</div>'
+tips[31]='Pecunia non olet.<div class="quot">Деньги не пахнут.</div>'
+document.write('<div style="font: 16px Century Gothic,Verdana,Arial; color: #ffffff; width: 49%">'+tips[today_date]+'</div>')
+
+// «Omnia animalia post coitum opressus est» — «Каждая тварь после соития печальна»
+// «Post hoc, nоn est propter hoc» — «После этого – не значит вследствие этого». Заимствовано из логики Аристотеля.
+// Конец цитаты дня
+
+
+</script>
+
+</head>
+
+<body style="background-color: #010101; margin: 0px; padding: 0px 19px 0px 29px">
+
+<!--
+Погода
+-->
+
+<!-- img id="winf1" style="position: fixed; bottom: 9px; right: 9px" src="http://informer.gismeteo.ru/27612-32.GIF" border="0" height="100" width="100" -->
+
+<!--a href="https://ru-meteo.ru/moscow" title="Погода в Москве на неделю"><img border="0" src="https://ru-meteo.ru/informer/moscow-1-7.png" alt="Погода в Москве"></a-->
+
+
+
+<!-- weather widget end -->
+
+
+
+<!-- Ссылки на странце — начало -->
+
+
+<div style="color: white">
+<br />• <a href="https://rutube.ru/"><svg x="0px" y="0px" viewBox="49 -3 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" style="background-color:transparent; width:67px; height: 14px">
+<g><path d="M13.9025 6H0V21H3.86952V16.1199H11.2841L14.6671 21H19L15.2695 16.0975C16.4281 15.9176 17.2622 15.4903 17.772 14.8156C18.2817 14.141 18.5366 13.0615 18.5366 11.6222V10.4978C18.5366 9.64318 18.444 8.96855 18.2817 8.45125C18.1195 7.93403 17.8415 7.48425 17.4476 7.07946C17.0305 6.69715 16.5671 6.42729 16.011 6.24737C15.4549 6.08995 14.7597 6 13.9025 6ZM13.2769 12.8141H3.86952V9.30582H13.2769C13.8098 9.30582 14.1805 9.3958 14.3659 9.55321C14.5512 9.71062 14.6671 10.003 14.6671 10.4303V11.6897C14.6671 12.1395 14.5512 12.4318 14.3659 12.5892C14.1805 12.7466 13.8098 12.8141 13.2769 12.8141Z" fill="white"></path><path d="M24.7575 16.5697V6H21V16.4798C21 17.3343 21.0675 18.0315 21.225 18.5487C21.3825 19.0885 21.6525 19.5382 22.0575 19.9206C22.44 20.3254 22.89 20.5952 23.43 20.7526C23.97 20.9326 24.645 21 25.5 21H34.5C35.3325 21 36.0075 20.9326 36.5475 20.7526C37.0875 20.5952 37.5375 20.3254 37.9425 19.9206C38.325 19.5382 38.595 19.0885 38.7525 18.5487C38.9101 18.0315 39 17.3343 39 16.4798V6H35.2425V16.5697C35.2425 17.0195 35.13 17.3119 34.95 17.4693C34.77 17.6267 34.41 17.6941 33.8925 17.6941H26.1075C25.5675 17.6941 25.2075 17.6267 25.0275 17.4693C24.8475 17.3119 24.7575 17.0195 24.7575 16.5697Z" fill="white"></path><path d="M51.8487 21V9.30582H59V6H41V9.30582H48.1512V21H51.8487Z" fill="white"></path><path d="M64.7575 16.5697V6H61V16.4798C61 17.3343 61.0676 18.0315 61.225 18.5487C61.3825 19.0885 61.6525 19.5382 62.0575 19.9206C62.44 20.3254 62.89 20.5952 63.43 20.7526C63.97 20.9326 64.645 21 65.5 21H74.5C75.3325 21 76.0075 20.9326 76.5475 20.7526C77.0875 20.5952 77.5375 20.3254 77.9425 19.9206C78.325 19.5382 78.595 19.0885 78.7525 18.5487C78.91 18.0315 79 17.3343 79 16.4798V6H75.2425V16.5697C75.2425 17.0195 75.13 17.3119 74.95 17.4693C74.7699 17.6267 74.41 17.6941 73.8925 17.6941H66.1075C65.5675 17.6941 65.2075 17.6267 65.0275 17.4693C64.8475 17.3119 64.7575 17.0195 64.7575 16.5697Z" fill="white"></path><path d="M98.2567 10.3628V10.0705C98.2567 8.67618 97.8964 7.64168 97.1749 6.98951C96.4541 6.33733 95.3054 6 93.7737 6H81V21H94.5169C96.0486 21 97.1974 20.6852 97.9189 20.033C98.6397 19.3808 99 18.3463 99 16.9521V16.6372C99 15.2429 98.6397 14.2534 97.9189 13.6687C97.7835 13.5787 97.6481 13.5112 97.5134 13.4438C97.378 13.3763 97.1749 13.2864 96.9274 13.1964C97.4231 12.9265 97.7609 12.5667 97.9633 12.1619C98.1439 11.7571 98.2567 11.1499 98.2567 10.3628ZM84.7624 12.0045V9.30582H93.165C93.7059 9.30582 94.0663 9.3958 94.2469 9.55321C94.4266 9.71062 94.5169 10.003 94.5169 10.4303V10.8801C94.5169 11.3299 94.4266 11.6222 94.2469 11.7796C94.0663 11.9371 93.7059 12.0045 93.165 12.0045H84.7624ZM84.7624 17.6941V14.9955H93.9309C94.4492 14.9955 94.8096 15.0854 94.9901 15.2429C95.1699 15.4003 95.2828 15.6927 95.2828 16.1199V16.5697C95.2828 17.0195 95.1699 17.3119 94.9901 17.4693C94.8096 17.6267 94.4492 17.6941 93.9309 17.6941H84.7624Z" fill="white"></path><path d="M104.837 9.30582H117.38V6H101V21H118V17.6941H104.837V15.153H117.081L117.38 11.8471H104.837V9.30582Z" fill="white"></path><path d="M121.682 5.25234C123.128 5.25234 124.301 4.07656 124.301 2.62617C124.301 1.17578 123.128 0 121.682 0C120.235 0 119.062 1.17578 119.062 2.62617C119.062 4.07656 120.235 5.25234 121.682 5.25234Z" fill="#F41240"></path></g>
+</svg></a>
+<a href="https://zenstat.ru/video/check/rutube/?ysclid=m37657b1f2808597879" title="Скачать видео с RUTUBE"><div style="font-size: 20px; display: inline-block; transform: rotate(90deg); margin: -3px 0px 0px 9px; position: absolute">&#10151;</div></a>
+
+<br />• <a href="https://vkvideo.ru/bookmarks" title="Скачивать видео можно с помощью savefrom.net">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="width: 14px; height:14px">
+<g><title>Скачивать видео можно с помощью savefrom.net</title>
+<path fill="#07F" d="M8.78 0C1.55 0 0 1.55 0 8.77v6.46C0 22.45 1.55 24 8.78 24h6.45V0H8.78Z"></path>
+<path fill="#FF2B42" d="M12.9 24h2.29c7.09 0 8.74-1.48 8.81-8.28V8.77a44.9 44.9 0 0 0 0-.53C23.92 1.47 22.27 0 15.2 0H12.9C5.64 0 4.08 1.55 4.08 8.77v6.46c0 7.22 1.56 8.77 8.82 8.77Z"></path>
+<path fill="#fff" d="M17.48 10.24c1.04.6 1.55.9 1.73 1.28.15.34.15.73 0 1.07-.18.4-.7.7-1.73 1.29l-4.4 2.54c-1.04.6-1.56.9-1.99.86a1.31 1.31 0 0 1-.92-.54c-.25-.34-.25-.94-.25-2.14V9.51c0-1.2 0-1.79.25-2.14.22-.3.55-.5.92-.53.43-.05.95.25 1.98.85l4.41 2.55Z"></path>
+</g>
+</svg> <span style='position: absolute; margin: 1px 0px 0px 4px; font-size:13px'>VK Видео</span>
+</a>
+<br />• <a href="http://www.youtube.com"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 509 109" style="width:53px">
+<g>
+<path fill="#FF0000" d="M154.3,17.5c-1.8-6.7-7.1-12-13.8-13.8c-12.1-3.3-60.8-3.3-60.8-3.3S31,0.5,18.9,3.8 c-6.7,1.8-12,7.1-13.8,13.8C1.9,29.7,1.9,55,1.9,55s0,25.3,3.3,37.5c1.8,6.7,7.1,12,13.8,13.8c12.1,3.3,60.8,3.3,60.8,3.3 s48.7,0,60.8-3.3c6.7-1.8,12-7.1,13.8-13.8c3.3-12.1,3.3-37.5,3.3-37.5S157.6,29.7,154.3,17.5z"/>
+<polygon fill="#ffffff" points="64.2,78.4 104.6,55 64.2,31.6"/>
+</g>
+<g>
+<path fill="#fff" d="M227.9,99.7c-3.1-2.1-5.3-5.3-6.6-9.7c-1.3-4.4-1.9-10.2-1.9-17.5v-9.9c0-7.3,0.7-13.3,2.2-17.7 c1.5-4.5,3.8-7.7,7-9.7c3.2-2,7.3-3.1,12.4-3.1c5,0,9.1,1,12.1,3.1c3,2.1,5.3,5.3,6.7,9.7c1.4,4.4,2.1,10.3,2.1,17.6v9.9 c0,7.3-0.7,13.1-2.1,17.5c-1.4,4.4-3.6,7.6-6.7,9.7c-3.1,2-7.3,3.1-12.5,3.1C235.2,102.8,231,101.7,227.9,99.7z M245.2,89 c0.9-2.2,1.3-5.9,1.3-10.9V56.8c0-4.9-0.4-8.5-1.3-10.7c-0.9-2.3-2.4-3.4-4.5-3.4c-2.1,0-3.5,1.1-4.4,3.4 c-0.9,2.3-1.3,5.8-1.3,10.7v21.3c0,5,0.4,8.7,1.2,10.9c0.8,2.2,2.3,3.3,4.5,3.3C242.8,92.3,244.3,91.2,245.2,89z"/>
+<path fill="#fff" d="M464.4,72.7v3.5c0,4.4,0.1,7.7,0.4,9.9c0.3,2.2,0.8,3.8,1.6,4.8c0.8,1,2.1,1.5,3.8,1.5 c2.3,0,3.9-0.9,4.7-2.7c0.9-1.8,1.3-4.8,1.4-8.9l13.3,0.8c0.1,0.6,0.1,1.4,0.1,2.4c0,6.3-1.7,11-5.2,14.1 c-3.5,3.1-8.3,4.7-14.6,4.7c-7.6,0-12.9-2.4-15.9-7.1c-3-4.7-4.6-12.1-4.6-22V61.6c0-10.2,1.6-17.7,4.7-22.4 c3.2-4.7,8.6-7.1,16.2-7.1c5.3,0,9.3,1,12.1,2.9c2.8,1.9,4.8,4.9,6,9c1.2,4.1,1.7,9.7,1.7,16.9v11.7H464.4z M466.4,43.9 c-0.8,1-1.3,2.5-1.6,4.7c-0.3,2.2-0.4,5.5-0.4,10v4.9h11.2v-4.9c0-4.4-0.1-7.7-0.4-10c-0.3-2.3-0.8-3.9-1.6-4.8 c-0.8-0.9-2-1.4-3.6-1.4C468.3,42.5,467.1,43,466.4,43.9z"/>
+<path fill="#fff" d="M190.5,71.4L173,8.2h15.3l6.1,28.6c1.6,7.1,2.7,13.1,3.5,18h0.4c0.5-3.6,1.7-9.5,3.5-17.9l6.3-28.7h15.3 l-17.7,63.1v30.3h-15.1V71.4z"/>
+<path fill="#fff" d="M311.5,33.4v68.3h-12l-1.3-8.4h-0.3c-3.3,6.3-8.2,9.5-14.7,9.5c-4.5,0-7.9-1.5-10-4.5 c-2.2-3-3.2-7.6-3.2-13.9v-51h15.4v50.1c0,3,0.3,5.2,1,6.5c0.7,1.3,1.8,1.9,3.3,1.9c1.3,0,2.6-0.4,3.8-1.2 c1.2-0.8,2.1-1.9,2.7-3.1V33.4H311.5z"/>
+<path fill="#fff" d="M390.4,33.4v68.3h-12l-1.3-8.4h-0.3c-3.3,6.3-8.2,9.5-14.7,9.5c-4.5,0-7.9-1.5-10-4.5 c-2.2-3-3.2-7.6-3.2-13.9v-51h15.4v50.1c0,3,0.3,5.2,1,6.5c0.7,1.3,1.8,1.9,3.3,1.9c1.3,0,2.6-0.4,3.8-1.2 c1.2-0.8,2.1-1.9,2.7-3.1V33.4H390.4z"/>
+<path fill="#fff" d="M353.3,20.6H338v81.1h-15V20.6h-15.3V8.2h45.5V20.6z"/>
+<path fill="#fff" d="M441.2,44.3c-0.9-4.3-2.4-7.4-4.5-9.4c-2.1-1.9-4.9-2.9-8.6-2.9c-2.8,0-5.5,0.8-7.9,2.4 c-2.5,1.6-4.3,3.7-5.7,6.3h-0.1l0-36h-14.8v96.9h12.7l1.6-6.5h0.3c1.2,2.3,3,4.1,5.3,5.5c2.4,1.3,5,2,7.9,2c5.2,0,9-2.4,11.5-7.2 c2.4-4.8,3.7-12.3,3.7-22.4V62.2C442.6,54.6,442.1,48.6,441.2,44.3z M427.1,72.2c0,5-0.2,8.9-0.6,11.7c-0.4,2.8-1.1,4.8-2.1,6 c-1,1.2-2.3,1.8-3.9,1.8c-1.3,0-2.4-0.3-3.5-0.9c-1.1-0.6-1.9-1.5-2.6-2.7V49.3c0.5-1.9,1.4-3.4,2.7-4.6c1.3-1.2,2.6-1.8,4.1-1.8 c1.6,0,2.8,0.6,3.6,1.8c0.9,1.2,1.4,3.3,1.8,6.2c0.3,2.9,0.5,7,0.5,12.4V72.2z"/>
+</g>
+</svg>
+</a>
+<a href="https://youtube4kdownloader.com/ru112/" title="Скачать видео с YouTube"><div style="font-size: 20px; display: inline-block; transform: rotate(90deg); color: red; margin: -2px 0px 0px 9px; position: absolute">&#10151;</div></a>
+
+<br />• <a href="https://ru.savefrom.net/7/" title="В адресной строке браузера перед словом &lt;span style='color:red'&gt;youtube&lt;/span&gt; ввести &lt;span style='color:red'&gt;ss&lt;/span&gt; или &lt;span style='color:red'&gt;gv&lt;/span&gt; и нажать Enter" ><svg style="margin-bottom: -3px; width: 16px; height: 14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 259 229">
+
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient4029">
+      <stop
+         style="stop-color:#c2fb26;stop-opacity:1"
+         offset="0"
+         id="stop4031" />
+      <stop
+         style="stop-color:#96c815;stop-opacity:1"
+         offset="1"
+         id="stop4033" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4021">
+      <stop
+         style="stop-color:#85bd08;stop-opacity:1"
+         offset="0"
+         id="stop4023" />
+      <stop
+         style="stop-color:#c4fd26;stop-opacity:1"
+         offset="1"
+         id="stop4025" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3813">
+      <stop
+         style="stop-color:#95c715;stop-opacity:1"
+         offset="0"
+         id="stop3815" />
+      <stop
+         style="stop-color:#c2fb26;stop-opacity:1"
+         offset="1"
+         id="stop3817" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3805">
+      <stop
+         style="stop-color:#659301;stop-opacity:1;"
+         offset="0"
+         id="stop3807" />
+      <stop
+         style="stop-color:#659301;stop-opacity:0;"
+         offset="1"
+         id="stop3809" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3797">
+      <stop
+         style="stop-color:#81b906;stop-opacity:1"
+         offset="0"
+         id="stop3799" />
+      <stop
+         style="stop-color:#c4fd26;stop-opacity:1"
+         offset="1"
+         id="stop3801" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3797"
+       id="linearGradient3803"
+       x1="66.331795"
+       y1="83.382408"
+       x2="66.050255"
+       y2="5.644331"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3805"
+       id="linearGradient3811"
+       x1="65.493309"
+       y1="89.151413"
+       x2="28.258291"
+       y2="51.202354"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3813"
+       id="linearGradient3819"
+       x1="49.057892"
+       y1="41.647968"
+       x2="49.177689"
+       y2="9.2187757"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3797-4"
+       id="linearGradient3803-2"
+       x1="66.331795"
+       y1="83.382408"
+       x2="66.050255"
+       y2="5.644331"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3797-4">
+      <stop
+         style="stop-color:#81b906;stop-opacity:1"
+         offset="0"
+         id="stop3799-8" />
+      <stop
+         style="stop-color:#c4fd26;stop-opacity:1"
+         offset="1"
+         id="stop3801-9" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3813-9"
+       id="linearGradient3819-4"
+       x1="49.057892"
+       y1="41.647968"
+       x2="49.177689"
+       y2="9.2187757"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3813-9">
+      <stop
+         style="stop-color:#95c715;stop-opacity:1"
+         offset="0"
+         id="stop3815-7" />
+      <stop
+         style="stop-color:#c2fb26;stop-opacity:1"
+         offset="1"
+         id="stop3817-4" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3805-0"
+       id="linearGradient3811-1"
+       x1="65.493309"
+       y1="89.151413"
+       x2="28.258291"
+       y2="51.202354"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3805-0">
+      <stop
+         style="stop-color:#659301;stop-opacity:1;"
+         offset="0"
+         id="stop3807-9" />
+      <stop
+         style="stop-color:#659301;stop-opacity:0;"
+         offset="1"
+         id="stop3809-3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4021"
+       id="linearGradient4027"
+       x1="122.57152"
+       y1="215.25537"
+       x2="123.12136"
+       y2="20.145763"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4029"
+       id="linearGradient4035"
+       x1="82.07856"
+       y1="5.8341517"
+       x2="81.9235"
+       y2="102.12499"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4029-3"
+       id="linearGradient4035-1"
+       x1="82.07856"
+       y1="5.8341517"
+       x2="81.9235"
+       y2="102.12499"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient4029-3">
+      <stop
+         style="stop-color:#c2fb26;stop-opacity:1"
+         offset="0"
+         id="stop4031-7" />
+      <stop
+         style="stop-color:#96c815;stop-opacity:1"
+         offset="1"
+         id="stop4033-0" />
+    </linearGradient>
+  </defs>
+    <path
+       style="fill:url(#linearGradient4027);fill-opacity:1;stroke:none;stroke-width:0.10000000000000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="M 73.782772,0.30225752 172.08029,0.38734785 171.53558,97.306003 245.31835,97.620904 122.93153,222.91889 0.37453184,97.306003 l 73.78277116,0 z" />
+      <path d="M 74.097673,0.15753677 86.687034,0.30225752 86.516854,110.32953 74.097673,96.931471 z"
+         style="fill:url(#linearGradient4035);fill-opacity:1;stroke:none;stroke-width:0.10000000000000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path d="M 0.37453179,97.391093 74.557295,97.161282 86.687034,110.2699 z"
+         style="fill:#cefd60;fill-opacity:1;stroke:none;stroke-width:0.10000000000000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <g
+       transform="matrix(-1,0,0,1,245.76454,0.19817725)"
+       id="g4038-9">
+      <path d="M 74.097673,0.15753677 86.687034,0.30225752 86.516854,110.32953 74.097673,96.931471 z"
+         style="fill:url(#linearGradient4035-1);fill-opacity:1;stroke:none;stroke-width:0.10000000000000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path d="M 0.37453179,97.391093 74.557295,97.161282 86.687034,110.2699 z"
+         style="fill:#cefd60;fill-opacity:1;stroke:none;stroke-width:0.10000000000000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <path
+       style="fill:#71a304;fill-opacity:0.77254902000000003;stroke:none;stroke-width:0.10000000000000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="M 122.70172,213.7854 244.94382,97.791085 122.78681,223.52323 0.22981108,97.306003 z" />
+      <path d="M 46.41888,0.08086219 66.447735,0.06025879 66.091342,90.806429 16.255541,39.230501 46.551413,39.121035 z"
+         style="fill:url(#linearGradient3803);fill-opacity:1;stroke:none;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none" />
+          <path d="m 46.36046,0.19953972 5.28467,-0.006748 -0.04123,44.27131612 -5.161957,-5.585071 z"
+             style="fill:url(#linearGradient3819);stroke:none;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1" />
+          <path d="m 16.237402,39.207434 30.204546,-0.241999 5.243445,5.617978 z"
+             style="fill:#cefd60;stroke:none;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:0.99607842999999996" />
+          <path d="m 16.337029,39.220662 49.710016,46.981919 0.09781,4.58078 z"
+             style="fill:url(#linearGradient3811);stroke:none;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1" />
+    <g
+       transform="matrix(-1,0,0,1,245.41746,-0.44621724)"
+       id="g3935-9">
+      <path d="M 46.41888,0.08086219 66.447735,0.06025879 66.091342,90.806429 16.255541,39.230501 46.551413,39.121035 z"
+         style="fill:url(#linearGradient3803-2);fill-opacity:1;stroke:none" />
+          <path d="M 46.36046,0.19953972 51.64513,0.19279172 51.6039,44.464108 46.441943,38.879037 z"
+             style="fill:url(#linearGradient3819-4);fill-opacity:1;stroke:none" />
+          <path d="m 16.237402,39.207434 30.204546,-0.241999 5.243445,5.617978 z"
+             style="fill:#cefd60;fill-opacity:0.99607843;stroke:none" />
+          <path d="m 16.337029,39.220662 49.710016,46.981919 0.09781,4.58078 z"
+             style="fill:url(#linearGradient3811-1);fill-opacity:1;stroke:none" />
+  </g>
+</svg>
+<svg style="width: 59px; height: 14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169 39">
+<path fill="#fff" d="m58.364,39.516v-11.984l.017-12.199c0-.054-.021-.105-.06-.143-.037-.037-.088-.058-.14-.058-.001,0-1.709,.025-1.709,.025-.258,0-.541-.006-.618-.084-.08-.08-.077-.372-.074-.775l.002-1.457h2.382c.11,0 .199-.089 .2-.199l.017-3.059c.033-3.286 .24-4.597 .963-6.098 .726-1.473 1.844-2.485 3.318-3.006 .507-.182 1.17-.282 1.869-.282 .975,0 1.907,.185 2.559,.507 2.628,1.293 3.62,3.482 3.538,7.806l-.004,.246c-.038,2.086-.038,2.086-.813,2.086l-.803-.014c-.646-.016-1.114-.027-1.194-.085 .005-.01 .019-.109 .031-.189l.015-.108c.037-.308 .07-1.457 .085-2.396 .017-2.295-.298-3.511-1.125-4.339-.564-.566-1.389-.891-2.262-.891-1.02,0-1.939,.436-2.458,1.167-.804,1.14-.92,1.819-.954,5.595l-.033,3.059c0,.053 .021,.104 .058,.143s.089,.06 .142,.06h4.515v1.003c.017,.666-.05,1.199-.089,1.288-.002-.004-.017-.006-.043-.006-.13,0-.555,.043-1.411,.043 0,0-.954-.01-1.212-.01-.584,0-1.271,.011-1.446,.043-.497,.099-.497,.099-.497,12.397v11.916h-2.766z"/>
+<path fill="#fff" d="m161.448,39.578c-1.068,0-2.389-.322-3.07-.75-1.108-.699-1.981-2.232-2.174-3.816-.046-.389-.098-4.828-.098-10.187l-.017-9.46c0-.053-.021-.104-.06-.142-.038-.037-.088-.058-.141-.058-.001,0-1.036,.017-1.036,.017-.209,.007-.388,.012-.542,.012-.393,0-.587-.035-.669-.119-.119-.123-.116-.476-.103-1.042 0-.454 .018-.875 .027-1.103l.001-.032c.168-.028 .543-.057 1.071-.057h1.25c.11,0 .2-.09 .2-.2v-2.891c0-1.394 .024-2.456 .047-2.807 .021,0 .047,.001 .078,.001 .164,0 .476-.007 .94-.007 .574,0 1.219,.01 1.6,.032 .1,.357 .1,2.016 .1,2.747v2.925c0,.11 .09,.2 .2,.2h5.769l.014,1.139c.007,.522 .014,1.061-.049,1.142-.004,0-.031,.006-.111,.01l-.416,.003c-.553,.005-1.541,.013-2.573,.013l-2.634,.017c-.11,.001-.199,.09-.199,.2v9.793c0,9.312 .019,9.898 .325,10.458 .447,.898 1.164,1.357 2.125,1.357 1.416,0 2.222-.76 2.611-2.462 .181-.839 .216-6.592 .104-10.012-.104-2.807-.149-4.163-.075-4.338-.005,.013 .027,.018 .1,.018 .132,0 .396-.014 .826-.014 .845,0 1.611,.053 1.732,.1 .047,.158 .084,2.202 .149,7.169 .1,7.056-.182,8.827-1.666,10.527-.665,.761-2.266,1.54-3.295,1.604-.109,.009-.224,.013-.341,.013z"/>
+<path fill="#fff" d="m48.702,39.764c-.436,0-.881-.054-1.322-.158-2.105-.5-3.147-1.719-3.717-4.344-.197-.94-.245-2.642-.245-8.665 0-4.241 .035-7.788 .081-8.074 .441-2.574 .885-3.709 1.828-4.671 .691-.693 1.359-1.037 2.463-1.265 .339-.071 .681-.107 1.018-.107 1.777,0 3.339,.981 4.179,2.625 .751,1.442 .877,2.62 .844,7.88l-.032,4.698-4.519-.003c-2.836,0-3.006,.1-3.097,.306-.135,.425-.003,6.044 .103,6.683 .2,1.022 .731,1.911 1.322,2.217 .291,.163 .521,.247 .959,.247 .187,0 .416-.015 .716-.042 .611-.042 1.438-1.137 1.659-1.971 .191-.786 .26-4.093 .103-4.917-.021-.109-.033-.162-.032-.18 .007,0 1.624-.034 1.624-.034l1.083-.015 .011,.388c.148,4.004-.024,5.375-.876,6.987-.798,1.512-2.351,2.415-4.153,2.415zm.155-24.689c-.709,0-1.38,.298-1.795,.798-.699,.823-.878,1.977-.913,5.875l-.017,3.344c0,.053 .021,.104 .059,.142 .038,.038 .088,.06 .142,.06h4.665c.053,0 .104-.021 .142-.06 .038-.037 .059-.089 .059-.142l-.017-3.092c-.017-4.471-.234-5.808-1.054-6.503-.331-.272-.781-.422-1.271-.422z"/>
+<path fill="#fff" d="m87.239,39.777c-.853,0-1.657-.127-2.208-.348-1.078-.436-2.164-1.519-2.64-2.633-.652-1.487-.717-2.511-.7-10.952 .016-5.58 .08-7.821 .245-8.563 .095-.395 .238-1.03 .238-1.13 .041-.287 .718-1.576 1.118-2.042 .812-.96 1.597-1.362 3.233-1.655 .099-.017 .24-.024 .409-.024 .583,0 1.558,.097 2.117,.253 .71,.186 1.828,1.024 2.305,1.725 .563,.837 .986,2.165 1.133,3.552 .161,1.469 .148,15.688-.014,16.538-.457,2.419-1.678,4.275-3.267,4.968-.452,.198-1.17,.311-1.969,.311zm.048-24.745c-.889,0-1.701,.455-2.121,1.187-.722,1.225-.775,2.006-.726,10.445 .067,8.205 .068,8.36 .741,9.572 .306,.537 1.298,1.006 2.125,1.006 .942,0 1.794-.802 2.222-2.092 .295-.922 .327-1.723 .345-8.569 .016-3.97-.048-7.967-.136-8.554-.194-1.291-.724-2.402-1.286-2.704-.351-.19-.755-.291-1.164-.291z"/>
+<path fill="#fff" d="m146.985,39.774c-2.047,0-3.857-1.206-4.504-3-.589-1.621-.672-3.045-.639-10.879 .032-6.427 .061-7.774 .311-8.777 .595-2.447 1.659-3.805 3.452-4.405 .446-.145 .967-.221 1.502-.221 .678,0 1.361,.125 1.926,.351 .891,.351 1.994,1.392 2.41,2.273 .662,1.427 .781,2.514 .847,7.756l.048,4.782-.42,.012-.648,.008c-.741,.01-1.969,.025-3.212,.025l-3.251,.033c-.11,.001-.198,.091-.198,.201l.017,3.426c0,3.153 .034,3.555 .367,4.293 .455,1.002 1.136,1.488 2.083,1.488 .878,0 1.597-.5 2.078-1.446 .305-.612 .354-1.075 .354-3.3 0-.662 0-2.211 .119-2.4 .004,.013 .128,.017 .33,.017 .257,0 .64-.006 1.066-.006l1.086-.015 .03,2.14c.065,4.639-.99,6.729-3.766,7.459-.456,.123-.923,.185-1.388,.185zm.21-24.69c-.255,0-.513,.042-.767,.125-1.501,.526-1.836,1.692-1.887,6.572l-.033,3.393c0,.054 .021,.104 .058,.143 .038,.038 .089,.06 .143,.06h4.698c.054,0 .104-.021 .143-.06 .037-.038 .058-.089 .058-.143l-.033-3.426c-.034-3.864-.178-5.007-.734-5.826-.36-.532-.959-.838-1.646-.838z"/>
+<path fill="#fff" d="m5.714,39.664c-2.71,0-4.633-1.563-5.275-4.289-.174-.712-.234-4.819-.082-5.563 .034-.124 .063-.267 .077-.378 .126-.023 .417-.051 .954-.051 .778,0 1.494,.058 1.722,.115 .007,.157-.003,.546-.048,1.042-.053,.607-.083,1.778-.068,2.611 .053,2.799 .837,3.97 2.708,4.041l.158,.003c1.729,0 2.597-1.14 2.732-3.586 .154-3.02-.588-4.271-3.454-5.818-2.553-1.404-3.689-2.526-4.34-4.289-.458-1.232-.521-1.513-.587-3.597-.146-3.869 1.131-6.355 3.694-7.191 .347-.114 .847-.176 1.41-.176 .927,0 1.858,.164 2.372,.417 2.31,1.126 3.219,3.432 3.137,7.956-.034,1.335-.075,2.117-.105,2.374-.251,.043-.993,.086-1.772,.086-.363,0-.661-.01-.85-.028-.028-.341-.054-1.369-.054-2.896-.017-2.844-.029-3.13-.42-3.932-.478-.978-1.179-1.433-2.206-1.433-.95,.019-1.588,.468-2.068,1.414-.298,.563-.371,1.036-.405,2.66-.068,3.559 .488,4.59 3.303,6.13 2.96,1.6 3.875,2.494 4.658,4.558 .529,1.398 .615,4.39 .164,5.714-.876,2.555-2.368,3.85-4.696,4.077-.223,.019-.443,.029-.659,.029z"/>
+<path fill="#fff" d="m68.078,39.365c-.133-.229-.133-2.732-.133-13.271v-13.252h2.766v2.223c0,.094 .065,.175 .156,.195 .015,.003 .029,.005 .044,.005 .076,0 .147-.043 .181-.115l.316-.668c.35-.75 .845-1.236 1.656-1.626 .348-.172 .788-.263 1.273-.263 1.13,0 2.316,.484 2.884,1.178 1.067,1.298 1.388,3.064 1.371,7.56-.02,2.517-.057,4.323-.099,4.831-.05,.609-.101,1.234-.101,1.387-.096,.101-.84,.101-1.383,.101h-1.354l.087-1.426c.183-2.932 .12-8.284-.107-9.09-.287-.972-1.049-1.801-1.774-1.931-.122-.019-.242-.027-.364-.027-.778,0-1.56,.348-1.902,.846-.852,1.185-.885,1.672-.885,13.032v10.3l-1.799,.028c-.144,0-.833-.017-.833-.017z"/>
+<path fill="#fff" d="m114.083,29.02c-.019-6.162-.034-10.313-.051-10.542-.229-2.212-1.294-3.529-2.849-3.529-1.58,0-2.527,.95-2.896,2.904-.138,.725-.204,4.339-.204,11.051 0,5.09-.043,9.234-.085,9.938-.209,.009-1.069,.051-1.873,.051-.256,0-.485-.005-.652-.015-.052-.42-.139-2.257-.139-9.807 0-10.139-.045-11.293-.481-12.344-.447-1.081-1.447-1.78-2.547-1.78-.537,0-1.058,.169-1.504,.491-.428,.317-1.284,1.771-1.412,2.395-.058,.201-.11,8.31-.121,9.933-.034,5.56-.084,10.072-.115,10.498l-.026,.632-1.138-.015c-.537,0-1.045-.009-1.319-.014h-.048c-.125-1.017-.129-7.836-.119-12.989l.017-12.959 2.683-.087v.93c.015,1.005 .018,1.159 .274,1.159 0,0 0,0 .001,0 .157,0 .224-.12 .383-.411 .455-.848 1.483-1.604 2.503-1.84 .212-.048 .479-.073 .773-.073 .757,0 1.567,.163 2.02,.406 .823,.413 1.322,.971 1.675,1.869l.283,.719c.029,.074 .099,.123 .178,.126 .003,0 .006,0 .009,0 .075,0 .146-.043 .179-.111l.383-.769c.786-1.562 1.943-2.258 3.753-2.258 .137,0 .278,.004 .423,.012 1.366,.064 2.578,.558 3.243,1.318 .563,.665 1.184,1.94 1.354,2.783 .059,.295 .144,4.962 .18,11.442 .037,6.547 .035,10.099-.078,10.731-.174,.003-2.639,.06-2.639,.06l-.018-9.905z"/>
+<path fill="#fff" d="m129.12,38.897c-.452-.017-1.139-.033-1.558-.033l-.549-.012v-26.01h1.332c.758,0 1.217,.026 1.368,.079l.003,.147c.005,.207 .012,.517 .012,.827 0,.24 .002,.41 .011,.52 .007,.084 .027,.339 .25,.339 .146,0 .228-.13 .293-.235 .422-.705 1.36-1.573 1.935-1.791 .299-.111 .739-.173 1.237-.173 .834,0 1.711,.169 2.233,.432 1.224,.605 2.181,2.251 2.441,4.193 .062,.467 .131,5.437 .131,11.388 .013,7.952 .017,10.089-.139,10.318-.112-.009-.357-.011-.653-.011-.167,0-.351,.001-.536,.001-.514,0-1.04-.004-1.28-.013-.141-.206-.141-2.312-.141-10.146 0-11.221-.043-11.818-.918-12.785-.482-.515-1.178-.809-1.91-.809-.895,0-1.688,.419-2.124,1.121-.747,1.221-.762,1.451-.797,12.271-.03,5.201-.047,9.596-.049,10.338-.082,.021-.238,.045-.468,.045l-.124-.001z"/>
+<path fill="#fff" d="m26.625,39.767c-1.508-.017-2.032-.083-2.438-.31-.746-.381-1.19-.875-1.407-1.557l-.201-.604c-.025-.073-.089-.126-.167-.135-.008-.001-.016-.002-.023-.002-.069,0-.133,.035-.17,.095l-.466,.752c-.697,1.102-1.939,1.76-3.322,1.76-.63,0-1.25-.135-1.842-.399-.88-.395-1.468-1.01-1.967-2.06-.378-.838-.414-.997-.447-3.86-.049-3.874 .214-5.044 1.409-6.258 .999-1.019 2.238-1.396 4.573-1.396l.63,.005c.766,0 1.103-.052 1.21-.374 .166-.683-.002-7.412-.198-8.106-.304-1.093-.886-1.687-1.78-1.814-.114-.015-.223-.022-.329-.022-1.247,0-2.121,.97-2.396,2.661-.139,.872-.12,4.013 .032,5.336l.075,.663h-2.76l-.066-.704c-.133-1.665-.096-5.055 .063-5.753 .1-.401 .201-.873 .234-1.042 .142-.646 .873-1.999 1.348-2.491 .554-.539 1.568-1.132 2.257-1.316 .317-.083 .664-.125 1.029-.125 1.363,0 2.812,.585 3.691,1.492 .631,.633 1.265,2.271 1.445,3.729 .065,.509 .132,4.757 .148,9.469l.002,.449c.031,8.896 .031,8.896 1.092,9.111 .354,.067 1.081,.115 1.639,.115h.864l-.029,2.722-1.733-.031zm-6.442-11.659c-.493,0-.932,.022-1.205,.062-1.856,.247-2.039,1.027-2.071,4.559-.033,3.054 .054,3.701 1.124,4.257 .274,.145 .644,.221 1.067,.221 .657,0 1.33-.186 1.756-.484 1.054-.756 1.152-1.508 1.185-5.009 .025-3.359-.103-3.408-.295-3.481-.305-.121-1.433-.125-1.561-.125z"/>
+<path fill="#fff" d="m33.636,39.516c-.722,0-1.069-.049-1.196-.081-.051-.336-.256-1.454-.823-4.485l-.319-1.644c-.368-1.894-.718-3.692-.847-4.405-.184-.92-.35-1.822-.383-2.005-.032-.122-.066-.308-.103-.505l-.081-.42c-.049-.312-.133-.767-.184-1.004-.128-.611-.836-4.309-1.148-6.011-.018-.126-.091-.5-.185-.979l-.232-1.195c-.191-1.009-.383-2.024-.432-2.334-.034-.212-.096-.527-.154-.819l-.08-.407-.092-.381h3.017l.065,.294c.048,.258 .13,.787 .18,1.2 .051,.42 .201,1.394 .335,2.183 .133,.782 .282,1.747 .332,2.163 .038,.31 .092,.673 .132,.938l.036,.237c.35,2.108 .613,3.818 .666,4.257 .067,.473 .268,1.777 1.084,6.859 .467,2.965 .482,3.087 .598,4.038 .147,1.062 .298,1.062 .432,1.062 .639,0 2.368-5.79 2.629-7.097 .383-1.855 .735-4.115 .836-5.372 .289-3.751-.016-8.366-.707-10.734 .062-.028 .79-.028 1.225-.028h1.325l.247,1.033c.153,.682 .298,1.628 .345,2.112 .05,.519 .117,1.156 .15,1.441 .099,.645 .098,5.285 0,6.137-.086,.706-.385,2.764-.515,3.55-.641,3.592-2.675,9.016-4.353,11.606l-.508,.794h-1.292z"/>
+<path fill="#fff" d="m121.771,39.656c-.589,0-1.101-.285-1.439-.802-.269-.404-.363-.875-.268-1.326 .102-.479 .406-.9 .857-1.187 .256-.166 .557-.254 .871-.254 .784,0 1.503,.515 1.748,1.251 .177,.55 .099,1.097-.222,1.536-.35,.482-.943,.782-1.547,.782z"/>
+</svg>
+</a>
+
+<br />• <a href="https://ru.pinterest.com/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" style="margin:0px 2px -3px 0px; height:16px; width:16px">
+<title>Pinterest</title><desc/>
+<path fill="red" d="M512 64C264.807 64 64 264.807 64 512s200.807 448 448 448s448-200.807 448-448S759.193 64 512 64m0 38.957c226.14 0 409.043 182.904 409.043 409.043c0 226.14-182.904 409.043-409.043 409.043c-41.365 0-81.269-6.19-118.886-17.576c16.756-28.014 38.39-68.058 46.984-101.12c5.106-19.601 26.098-99.559 26.098-99.559c13.642 26.045 53.503 48.087 95.945 48.087c126.295 0 217.343-116.149 217.343-260.484c0-138.375-112.916-241.88-258.201-241.88c-180.753 0-276.69 121.314-276.69 253.407c0 61.433 32.673 137.902 84.989 162.256c7.924 3.688 12.18 2.09 14-5.592c1.4-5.831 8.468-34.255 11.64-47.479c1.016-4.22.524-7.866-2.89-12.021c-17.316-21.004-31.196-59.583-31.196-95.566c0-92.374 69.932-181.771 189.076-181.771c102.875 0 174.924 70.13 174.924 170.396c0 113.281-57.2 191.777-131.63 191.777c-41.106 0-71.885-34.005-62.011-75.706c11.838-49.77 34.695-103.478 34.695-139.43c0-32.149-17.253-58.967-52.994-58.967c-42.024 0-75.783 43.447-75.783 101.69c0 37.063 12.554 62.163 12.554 62.163s-41.511 175.51-49.114 208.174c-7.619 32.642-5.578 76.605-2.435 109.337C208.551 830.518 102.957 683.785 102.957 512c0-226.14 182.903-409.043 409.043-409.043"/></svg> <span title="Pinterst">Pinterest</span></a> <a href="https://dotsave.app/ru" title="Скачать видео с Pinterest"><div style="font-size: 20px; display: inline-block; transform: rotate(90deg); color: red; margin: -1px 0px 0px 9px; position: absolute" title="Скачать видео с Pinterest">&#10151;</div></a>
+
+<br />• <a href="https://www.ozon.ru/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 204 204" style="margin:0px 2px -3px 0px; height:16px; width:16px">
+<title>OZON</title><desc/>
+<g transform="matrix(1.3333333,0,0,-1.3333333,0,204)">
+    <g transform="scale(0.1)">
+      <path d="M 6.37891,1529.45 H 1526.38 V 511.75 c -45.7,49.699 -92.2,98.699 -138,148.199 43.9,96.102 51.7,210.5 9,308.399 -44.5,106.402 -139.9,183.802 -244.6,227.202 -162.1,67.2 -346.202,67 -514.1,22.3 -165.602,-44.6 -323.2,-134.8 -429.301,-271.6 -71.5,-91.902 -116.5001,-210.602 -98.602,-328 C 125.48,509.949 194.48,414.75 284.18,354.848 271.879,239.648 259.078,124.551 246.48,9.44922 H 6.37891 V 1529.45" style="fill:#005bff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path d="m 638.68,1217.85 c 167.898,44.7 352,44.9 514.1,-22.3 104.7,-43.4 200.1,-120.8 244.6,-227.202 42.7,-97.899 34.9,-212.297 -9,-308.399 -58.5,-127.801 -166.4,-227.5 -287.7,-295.398 -146.801,-81.5 -316.602,-122.102 -484.407,-113.5 -116.894,6.398 -234.293,38.097 -332.093,103.797 -89.7,59.902 -158.7,155.101 -173.403,263.402 -17.8981,117.398 27.102,236.098 98.602,328 106.101,136.8 263.699,227 429.301,271.6 z m 148.5,-200.8 C 670.18,1000.95 555.68,956.848 462.879,882.949 399.68,831.348 340.078,763.148 331.078,678.848 c -6.098,-54 28.102,-103 70.801,-132.399 85,-58.898 192.801,-74.199 294.101,-69.199 152.7,9.801 306,67.801 415.9,176.301 48.4,49.398 91.9,113 90.1,185 -5.9,51.797 -39.8,96.898 -84.4,122.797 -98,59.702 -218.6,69.602 -330.4,55.702" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path d="m 787.18,1017.05 c 111.8,13.9 232.4,4 330.4,-55.702 44.6,-25.899 78.5,-71 84.4,-122.797 1.8,-72 -41.7,-135.602 -90.1,-185 -109.9,-108.5 -263.2,-166.5 -415.9,-176.301 -101.3,-5 -209.101,10.301 -294.101,69.199 -42.699,29.399 -76.899,78.399 -70.801,132.399 9,84.3 68.602,152.5 131.801,204.101 92.801,73.899 207.301,118.001 324.301,134.101 z m 313.5,-652.499 c 121.3,67.898 229.2,167.597 287.7,295.398 45.8,-49.5 92.3,-98.5 138,-148.199 V 9.44922 H 246.48 c 12.598,115.10178 25.399,230.19878 37.7,345.39878 97.8,-65.7 215.199,-97.399 332.093,-103.797 167.805,-8.602 337.606,32 484.407,113.5" style="fill:#f91155;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+  </g></svg> <span title="OZON">OZON</span></a>
+
+<br />• <a href="https://tv.mail.ru/online/"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -3 49 49" style="margin:0px 2px -2px 0px; background-color:transparent; height:16px; width:16px">
+<title>Прямой эфир ТВ онлайн</title><desc/>
+ <path fill="#3399ff" d="M3,9h42v24H3V9z M29,36v3h7.41l3,3H8.59l3-3H19v-3H0V6h48v30H29z M46,34V8H2v26H46z"/>
+</svg> <span title="Прямой эфир ТВ онлайн">ТВ Mail.ru</span></a>
+
+<br />• <a href="http://telik.live/istoriya.html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 -1 141 141" style="margin:0px 2px -2px 0px; background-color:transparent; height:16px; width:16px">
+<title>Телеканал</title><desc/>
+<g><path style="stroke:#e18303;stroke-width:15;fill:none" d="m 48.290598,40.396371 0,54.700854 45.726496,-50.42735 0,55.128205" />
+<circle style="stroke:#e18303;stroke-width:15;fill:none" cx="71" cy="70" r="61"/>
+</g></svg> <span title="Телеканал">«История»</span></a>
+
+<br />• <a href="http://globalgalamtv.com/38-nauka-20.html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 137 137" style="margin:0px 2px -2px 0px; background-color:transparent; height:16px; width:16px"><title>Телеканал</title><desc/>
+<g>
+<path style="fill:#ffffff;stroke:none" d="m 45.298483,38.521311 20.35,0 0,25 14,0 0,-25 20.559997,0 0,65.500009 -20.559998,0 0,-24.850009 -14,0 0,24.850009 -20.35031,-2e-5 z" />
+<circle style="stroke:#ff0003;stroke-width:9;fill:none" cx="72" cy="72" r="61"/>
+</g></svg> <span title="Телеканал">«Наука»</span></a>
+ <!--
+-->
+
+<br />• <a href="http://globalgalamtv.com/129-moja-planeta.html"><svg x="0px" y="0px" viewBox="23 23 303 303" fill="none" style="margin:0px 2px -3px 0px; background-color:transparent; height:16px; width:16px" xmlns="http://www.w3.org/2000/svg">
+<path d="M324.084 175C324.084 92.2314 257.056 25 174.541 25C92.0263 25 25 92.2314 25 175C25 257.767 92.0271 325 174.541 325C257.056 324.998 324.084 257.767 324.084 175Z" fill="#3261B6"/>
+<path d="M317.184 175.002C317.184 96.0532 253.249 31.9239 174.541 31.9239C95.8347 31.9239 31.8994 96.0532 31.8994 175.002C31.8994 253.951 95.8347 318.08 174.541 318.08C253.249 318.08 317.184 253.951 317.184 175.002Z" fill="white"/>
+<path d="M191.675 178.791C192.313 177.189 193.484 175.473 193.59 173.985C193.695 172.497 193.067 171.223 192.31 169.862C191.552 168.5 190.108 167.493 189.045 165.816C187.98 164.137 186.196 162.234 184.413 160.33C185.846 163.524 187.503 166.836 188.713 169.912C189.923 172.989 190.688 175.831 191.675 178.791Z" fill="#3261B6"/>
+<path d="M168.533 275.336C168.312 274.844 168.091 274.353 167.87 273.861C168.069 272.615 168.269 271.371 168.468 270.126C168.078 269.082 167.688 268.038 167.297 266.995C166.81 259.363 166.322 251.731 166.127 249.187C165.932 246.643 163.981 244.687 164.566 242.143C165.151 239.599 166.604 239.012 166.463 235.881C166.322 232.75 168.078 215.92 168.468 212.007C168.858 208.093 170.029 203.592 170.029 201.635C170.029 199.678 170.328 191.612 173.059 194.156C175.79 196.7 174.321 198.7 178.418 203.396C182.514 208.093 180.173 206.919 182.319 213.376C184.465 219.834 187.197 220.617 187.782 223.357C188.367 226.096 189.538 236.076 189.733 237.837C189.928 239.599 190.513 242.73 190.708 245.861C190.903 248.992 191.879 249.774 191.879 253.101C191.879 256.428 192.269 258.776 193.244 261.516C194.22 264.255 193.635 265.038 192.269 267.973C190.903 270.909 192.317 271.736 193.728 272.566C193.891 273.515 194.052 274.465 194.215 275.414C194.246 275.579 194.277 275.744 194.309 275.909C189.272 275.856 184.235 275.802 179.198 275.748C175.704 275.774 172.211 275.8 168.718 275.825C168.657 275.662 168.595 275.499 168.533 275.336Z" fill="#3261B6"/>
+<path d="M111.404 280.093C124.368 278.195 137.489 277.239 150.611 276.281C150.668 276.115 150.725 275.948 150.782 275.781C150.86 275.252 150.938 274.724 151.016 274.194C150.745 272.206 150.474 270.22 150.203 268.232C149.796 264.318 149.39 260.405 149.254 257.013C149.118 253.621 147.629 247.881 147.899 239.793C148.171 231.704 148.983 225.181 149.661 224.007C150.339 222.833 149.932 218.658 150.61 217.484C151.287 216.31 150.88 210.831 150.745 206.655C150.609 202.481 150.353 199.351 150.353 197.266C150.353 195.18 148.313 195.308 146.274 195.436C145.122 195.433 143.97 195.428 143.795 196.596C143.619 197.762 143.389 203.774 143.158 209.787C142.751 209.743 142.345 209.699 141.938 209.657C141.983 204.829 142.029 200.002 142.074 195.176C141.818 194.406 141.562 193.638 140.313 192.436C139.093 191.262 137.061 191.523 136.789 191.393C136.519 191.262 136.112 187.348 136.519 186.305C136.925 185.261 137.745 182.503 136.248 182C133.538 181.086 133.979 178.987 132.725 177.564C131.115 175.738 131.641 172.607 130.422 171.954C129.202 171.302 129.202 169.475 129.202 167.649C128.863 167.127 128.525 166.605 126.899 164.778C125.273 162.952 126.628 161.126 127.17 160.343C127.711 159.56 127.576 158.516 128.795 158.516C130.015 158.516 129.744 157.473 129.744 155.777C129.744 154.08 129.338 153.69 128.389 151.863C127.441 150.037 128.119 148.199 128.66 145.862C129.19 143.573 129.202 143.123 127.441 141.426C125.679 139.731 125.544 135.034 125.138 132.555C124.731 130.077 126.492 126.163 127.17 125.641C127.847 125.119 127.712 121.597 128.66 120.944C129.608 120.292 129.88 117.813 130.557 117.292C131.235 116.77 131.641 114.421 132.589 113.639C133.538 112.856 134.892 110.508 135.977 110.116C137.061 109.725 138.145 108.355 139.229 106.985C139.635 106.725 140.041 106.464 139.905 104.376C139.77 102.289 140.312 101.768 141.125 102.028C141.938 102.289 141.938 103.854 141.938 105.42C143.361 105.355 144.783 105.29 145.867 105.29C146.951 105.29 148.171 103.594 149.526 103.594C150.88 103.594 153.319 104.507 153.996 104.768C154.675 105.028 155.351 102.942 157.646 103.333C159.941 103.724 161.042 103.985 161.042 102.42C161.042 100.854 161.389 100.335 159.823 98.8971C157.761 97.0044 157.791 92.5044 157.655 90.5475C157.52 88.5906 159.009 86.8952 159.823 85.851C160.636 84.8076 160.093 80.3717 160.636 78.8062C161.177 77.2407 163.752 75.2838 164.836 74.5011C165.92 73.7183 165.785 72.9356 168.223 72.4143C170.663 71.8922 174.049 72.4143 175.133 73.197C176.217 73.9798 177.166 73.5884 179.333 75.806C181.501 78.0235 182.043 80.6332 182.313 83.2421C182.584 85.851 181.637 88.1993 181.501 90.2869C181.365 92.3737 180.552 95.244 179.875 96.5489C179.197 97.853 177.979 98.7664 176.895 99.4192C175.809 100.071 175.133 100.267 176.352 101.245C177.572 102.224 181.84 101.637 183.466 102.224C185.092 102.811 187.53 106.92 189.766 109.464C192.001 112.008 191.391 112.204 191.233 114.944C191.075 117.683 190.375 124.141 191.233 126.685C192.091 129.229 192.205 133.143 192.205 136.665C192.205 140.187 193.424 139.992 194.44 141.753C195.456 143.514 197.286 148.015 198.099 153.103C198.912 158.191 198.912 164.061 199.317 166.605C199.724 169.149 202.164 172.867 202.366 176.39C202.569 179.912 204.399 184.804 203.991 186.761C203.586 188.718 201.756 192.24 199.317 192.957C196.878 193.674 198.912 195.176 200.13 197.915C201.35 200.655 200.334 204.569 200.944 206.721C201.553 208.874 202.164 215.723 202.773 219.245C203.383 222.768 204.195 224.333 204.602 227.856C205.009 231.378 204.602 241.945 205.009 246.642C205.415 251.338 206.431 254.078 207.65 258.187C208.869 262.297 210.598 266.015 212.325 269.733C213.342 271.525 214.358 273.316 215.373 275.108C215.96 275.472 216.546 275.836 217.133 276.2C217.202 276.368 217.269 276.536 217.339 276.704C223.484 277.793 229.629 278.882 237.394 280.283C273.309 259.065 297.247 219.806 297.247 174.999C297.247 107.084 242.249 51.9171 174.541 51.9171C106.834 51.9171 51.835 107.084 51.835 174.999C51.835 219.687 75.6486 258.856 111.404 280.093Z" fill="#3261B6"/>
+</svg> <span title="Телеканал">«Моя планета»</span></a>
+
+<br />• <a href="http://globalgalamtv.com/241-zhivaja-planeta.html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="15 0 63 63" style="margin: 0px 2px -4px 0px; background-color:transparent; height:16px; width:16px"><title>Телеканал</title><desc/><g transform="scale(0.015)">
+<path style="fill:#95DE01" d="M2796 20c249,-21 505,-11 744,70 35,13 70,36 83,73 14,44 -2,90 -18,132 -194,482 -386,966 -580,1448 -41,104 -138,184 -250,195 -158,17 -316,37 -473,58 -53,6 -114,11 -158,-25 -39,-33 -48,-88 -54,-137 -37,-377 -68,-754 -94,-1132 -6,-98 -33,-198 -4,-294 22,-75 81,-134 148,-171 203,-111 425,-193 657,-217z"/>
+<path style="fill:#B2DC02" d="M3917 292c38,-25 86,-15 124,4 313,165 571,434 712,759 54,121 94,248 122,377 12,58 8,121 -19,173 -23,44 -63,75 -99,109 -318,289 -641,573 -978,840 -39,30 -89,61 -140,44 -48,-17 -79,-59 -109,-97 -89,-115 -174,-233 -268,-344 -46,-53 -80,-118 -84,-189 -6,-71 17,-140 46,-204 198,-443 393,-889 598,-1329 25,-51 45,-110 94,-143z"/>
+<path style="fill:#449902" d="M1665 637c53,-26 108,25 109,79 57,407 109,815 167,1222 8,55 8,113 -18,163 -21,42 -57,73 -95,100 -132,96 -263,193 -397,286 -33,22 -75,43 -115,28 -38,-15 -56,-56 -69,-92 -56,-166 -77,-340 -86,-514 4,-411 124,-832 392,-1151 38,-40 67,-90 113,-122z"/>
+<path style="fill:#01B84A" d="M4860 1943c28,-11 67,-11 88,15 24,30 18,71 18,106 -16,271 -112,531 -245,766 -173,304 -435,554 -743,717 -39,18 -89,39 -128,11 -43,-38 -48,-101 -59,-154 -24,-156 -57,-310 -74,-467 -11,-79 29,-155 92,-201 237,-180 473,-359 710,-538 115,-84 224,-175 342,-255z"/>
+<path style="fill:#33BE0C" d="M2773 2106c69,-5 143,-7 206,27 61,29 110,78 150,131 113,151 227,301 340,452 36,48 57,106 65,165 33,203 66,406 95,610 6,50 16,103 -2,152 -18,46 -68,66 -112,78 -147,39 -300,55 -452,50 -283,-8 -568,-66 -825,-188 -323,-151 -592,-405 -785,-703 -24,-39 -48,-84 -36,-131 14,-49 57,-82 96,-111 147,-107 294,-214 441,-321 88,-69 190,-125 302,-138 172,-21 345,-43 516,-72z"/></g></svg> <span title="Телеканал">«Живая планета»</span></a>
+
+<br />• <a href="https://mosmetro.ru/metro-map/"><svg xmlns="http://www.w3.org/2000/svg" style="margin:0px 4px -5px 1px; width:14px; height:18px; background-color:transparent" viewBox="-1 79 799 799"><path  style="fill:none;stroke:#e52629;stroke-width:70;stroke-linecap:round" d="M 134.01675,528.92413 C -89.128171,301.6842 84.913348,-50.722363 369.48749,-50.13176 550.78453,-50.542213 703.90776,95.005977 702.87207,294.38701 703.18572,456.39631 615.15741,513.00067 359.99495,767.9663" transform="translate(-1,79)" />
+<polygon transform="matrix(0.79960065,0,0,0.79960065,-200.91685,-127.61626)" style="fill:#e52629" points="781.9,705.9 781.9,750.3 958.2,750.3 958.2,705.9 923.9,705.9 807.2,410.8 708.8,583.1 610.5,410.8 493.7,705.9 459.5,705.9 459.5,750.3 635.8,750.3 635.8,705.9 609.4,705.9 635.1,632.3 708.8,753.7 782.6,632.3 808.3,705.9 " />
+</svg>Московский Метрополитен</a>
+<br />• <a href="https://www.mos.ru/"><svg xmlns="http://www.w3.org/2000/svg" style="margin:0px 5px -5px 0px; width:13px; height:17px; background-color:transparent" viewBox="-1 27 193 193"><path style="fill:none;stroke:#ff0000;stroke-width:23;stroke-linecap:butt" d="m 11.952558,12.502172 167.969602,-0.05157 0.31546,168.664058 c -0.15221,12.3242 -6.63403,14.92803 -19.82178,14.83168 -36.75317,-0.65092 -40.91155,-2.94259 -75.247523,31.70297 l 0,-31.68317 -61.386139,0.9901 C 12.898145,196.7516 11.395857,188.86303 11.920792,179.13446 z" /></svg>Московский портал государственных услуг</a>
+<br />• <a href="https://emias.info/"><svg xmlns="http://www.w3.org/2000/svg" style="margin:0px 5px -3px 0px; width:13px; height:17px; background-color:transparent" viewBox="0 0 32 32"><defs><linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1"><stop stop-color="#20C3F3" offset="0%"></stop><stop stop-color="#50C4A3" offset="47.136081%"></stop><stop stop-color="#8CC63E" offset="100%"></stop></linearGradient></defs><g fill="url(#linearGradient-1)"><path d="M0,2.00174332 C0,0.89621101 0.889261723,0 2.00174332,0 L29.9982567,0 C31.103789,0 32,0.889261723 32,2.00174332 L32,29.9982567 C32,31.103789 31.1107383,32 29.9982567,32 L2.00174332,32 C0.89621101,32 0,31.1107383 0,29.9982567 L0,2.00174332 Z M3.2,4.20355034 L3.2,27.7964497 C3.2,28.3556641 3.64930479,28.8 4.20355034,28.8 L27.7964497,28.8 C28.3556641,28.8 28.8,28.3506952 28.8,27.7964497 L28.8,4.20355034 C28.8,3.64433594 28.3506952,3.2 27.7964497,3.2 L4.20355034,3.2 C3.64433594,3.2 3.2,3.64930479 3.2,4.20355034 Z M7.3475389,23.0512402 C7.3475389,23.608122 7.79548026,24.0595639 8.35586254,24.0595639 L23.4666667,24.0595639 L23.4666667,20.8357383 L10.7106141,20.8357383 L10.7106141,17.6279366 L20.2375602,17.6279366 L20.2375602,14.4068758 L10.7106141,14.4068758 L10.7106141,11.1642617 L23.4666667,11.1642617 L23.4666667,7.94043612 L8.35586254,7.94043612 C7.79898077,7.94043612 7.3475389,8.38837747 7.3475389,8.94875975 L7.3475389,23.0512402 Z" id="android-logo"></path></g></svg>Электронная медицинская карта</a>
+
+<br />• <a href="https://planetazdorovo.ru/"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" style="margin: 0px 2px -3px -1px; width:16px; height:16px; background-color:transparent" viewBox="0 0 49 49">
+<g>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#2ad1c5" d="M24,0.1c-13.2,0-24,10.8-24,24c0,13.2,10.8,24,24,24 c13.2,0,24-10.8,24-24C48.1,10.9,37.3,0.1,24,0.1L24,0.1z M24,5.1c-10.5,0-19,8.5-19,19c0,10.5,8.5,19,19,19c10.5,0,19-8.5,19-19 C43.1,13.7,34.5,5.1,24,5.1L24,5.1z"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#2ad1c5" d="M24.9,10.7l5,5c-1.5,1-3.2,1.6-5,1.8V10.7L24.9,10.7z M25.1,31.7 V39h-2v-7.3c-1.3,1-2.8,1.6-4.6,1.6c-0.9,0-1.7-0.1-2.5-0.4c1.6-2.3,4.2-3.9,7.2-4.2v2.9l-0.1,0.1h1.7v-3c3,0.3,5.6,1.8,7.2,4.2 c-0.8,0.3-1.6,0.4-2.5,0.4C27.9,33.2,26.3,32.7,25.1,31.7L25.1,31.7z M31.1,17l3.9,3.9h0c0.4,0.5,0.8,1,1.1,1.6H24.9v-3.2 C27.2,19.1,29.4,18.2,31.1,17L31.1,17z M36.8,24.1c0.1,0.6,0.2,1.1,0.2,1.7c0,2.6-1.3,4.9-3.3,6.2c-1.9-2.9-5.1-4.8-8.7-5.1v-2.8 H36.8L36.8,24.1z M14.5,32.1c-2-1.3-3.4-3.6-3.4-6.2c0-0.6,0.1-1.2,0.2-1.7h11.9v2.8C19.6,27.2,16.4,29.2,14.5,32.1L14.5,32.1z M11.9,22.4c0.5-0.9,1.1-1.7,1.9-2.3l3.2-3.2c1.8,1.3,3.9,2.1,6.2,2.3v3.2H11.9L11.9,22.4z M18.2,15.7l5-5v6.8 C21.4,17.4,19.6,16.7,18.2,15.7L18.2,15.7z"/>
+</g>
+</svg><span style="color: #fff" title="Аптека">Планета здоровья</span></a>
+
+<br />• <a href="https://online.vtb.ru/login"><svg style="margin: 0px 0px -4px 0px" viewBox="37 -3 41 41" xmlns="http://www.w3.org/2000/svg" width="49" height="17"><title>ВТБ онлайн</title><path d="M27.02 4.41H4.81l1.6-4.4h22.21zm-.8 2.2H4l-1.6 4.4h22.21zm-2.4 6.58H1.6L0 17.59h22.19z" fill="#009fdf"/><path style="-webkit-filter: drop-shadow(0px 0px 0px #009fdf); filter: drop-shadow(0px 0px 0px #009fdf)" d="M79.94 28.6h4A3.49 3.49 0 0 0 87 27.41a3.82 3.82 0 0 0 .78-2.51 3.48 3.48 0 0 0-1.37-3 4 4 0 0 0-2.51-.64h-3.96zm-5.25 4.43V6.61h17.19l-1.51 4.43H79.94v5.85h4.25c3.43 0 5.21.82 6.44 1.87a7.78 7.78 0 0 1 2.61 6.26 7.59 7.59 0 0 1-3.11 6.54c-1.65 1.14-3.38 1.46-6.9 1.46zm-15.22 0v-22h-7.64V6.61h21.21l-1.51 4.43h-6.76v22zM38.3 17.19h3a6.37 6.37 0 0 0 1.83-.14 2.89 2.89 0 0 0 2-3 2.67 2.67 0 0 0-2-2.93 7.28 7.28 0 0 0-2-.18H38.3zm0 4.57v6.93h3.66a3.93 3.93 0 0 0 2.83-.78 3.45 3.45 0 0 0 1.1-2.72 3.76 3.76 0 0 0-.7-2.26c-.78-1-1.74-1.19-3.38-1.19zm8.46-2.79v.09a9.27 9.27 0 0 1 2.47 1.42 6.23 6.23 0 0 1 2.24 5.17c0 3.61-1.92 6.22-5.07 7a13.47 13.47 0 0 1-3.84.37h-9.51V6.61h8.46a15.64 15.64 0 0 1 4 .37c3.06.82 5.07 2.93 5.07 6.26a5.85 5.85 0 0 1-1.69 4.3 6.41 6.41 0 0 1-2.08 1.41z" fill="#fff"/><!--#0a2973-->
+</svg></a>
+
+<br />• <a href="https://online.sberbank.ru/CSAFront/index.do#/"><svg xmlns="http://www.w3.org/2000/svg" style="margin: 0px 3px -1px 0px; width:14px; height:14px; background-color:transparent" viewBox="0 0 43 43"><title>Сбербанк онлайн</title><path fill="#00b956" d="M5.503 5.333l7.492 4.307L29.748 0c.856.366 1.683.787 2.478 1.258l-19.23 11.104-8.988-5.176c.464-.646.963-1.264 1.495-1.853zM2.826 9.02l10.17 5.846L34.261 2.628a21.471 21.471 0 0 1 1.892 1.62L12.995 17.57 1.771 11.115c.314-.72.666-1.42 1.055-2.096zM.959 13.295l12.036 6.92L37.762 5.972c.505.607.978 1.241 1.415 1.902L12.995 22.92.371 15.66c.152-.805.349-1.594.588-2.365zm-.91 4.89l12.946 7.457L40.34 9.855a21.264 21.264 0 0 1 2.37 9.788c0 11.794-9.561 21.355-21.355 21.355S0 31.437 0 19.643c0-.49.016-.976.049-1.458z"></path></svg><span style="color:#fff" title="Сбербанк онлайн">Сбербанк</span></a>
+
+<br />• <a href="https://my.mosenergosbyt.ru/auth"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 113 113" style="enable-background:new 0 0 669 114; margin:0px 2px -1px 0px; width:14px; height:14px; background-color:transparent" xml:space="preserve"><title>Личный кабинет</title><desc/><g>
+<path fill="#ff6400" d="M17.4,17.4c-21.9,21.9-21.9,57.4,0,79.3c17,17,42.2,20.7,62.8,11.3l-7.3-13.4l33.6,12L17.4,17.4"/>
+<path fill="#003264" d="M96.6,96.6c21.9-21.9,21.9-57.4,0-79.3c-17-17-42.2-20.7-62.8-11.3l7.3,13.4L7.5,7.5L96.6,96.6"/>
+<path fill="#ffffff" d="M95.8,59.9h-6.4c-0.7,2.9-2.5,4.5-5.1,4.5c-3,0-4.7-2.1-4.7-5.8c0-4,1.9-9.4,6.7-9.4c2.8,0,4,1.4,4.1,4.1h6.2    v-0.5c0-5.4-3.9-8.8-10-8.8c-8.3,0-13.3,6.5-13.3,14.7c0,6.9,3.9,10.9,10.6,10.9C90.2,69.5,94.6,66.1,95.8,59.9 M72.6,54.9    C72.6,48,68.7,44,62,44c-5.9,0-10.2,3.1-11.7,8.6h6.4c0.9-2.3,2.5-3.5,4.8-3.5c2.6,0,4.3,1.7,4.6,4.8h-7.8l-1.1,4.9h8.3    c-0.9,3-2.8,5.6-6.1,5.6c-2.8,0-4-1.4-4.1-4.2h-6.2v0.5c0,5.4,3.9,8.8,10,8.8C67.7,69.5,72.6,63,72.6,54.9 M50.5,44.6h-9.2    l-4.2,7.6c-1.3,2.5-3.4,6.7-4.1,9.7c0.2-2.6,0-5.2-0.2-7.9l-0.8-9.5h-8.9L18,69h6l2.1-10.4c0.6-3,1.2-6,1.5-9    c0,2.7,0.1,5.4,0.4,8.1L29.3,69h4.9L40,57.9c1.4-2.7,2.7-5.5,3.9-8.4c-0.8,2.9-1.5,5.9-2.2,8.8L39.3,69h6L50.5,44.6z"/>
+</g></svg><div style="display: inline-block; font-size:12px; margin: -13px 0px -13px 1px" title="Личный кабинет"><i>МОСЭНЕРГОСБЫТ</i></div></a>
+<br />• <a href="https://lk.megafon.ru/">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 57 57" enable-background="new 0 0 304 55" xml:space="preserve" style="margin:0px 2px -1px 0px; background-color:transparent; width:14px"><title>Для входа в личный кабинет vvv1359friend</title><desc/>
+<g><path fill="#00b956" d="M30.3,0.7v27.8l0,0l0,0c0,1.3-1,2.2-2.2,2.2h-3.3l0,0c-0.2,0-0.3,0.2-0.3,0.3v23.3 c0.8,0,1.6,0.2,2.5,0.2c14.9,0,27-12.1,27-27C54,13.8,43.7,2.3,30.3,0.7z M29.7,42.3c-1.9,0-3.3-1.6-3.3-3.3 c0-1.9,1.6-3.3,3.3-3.3c1.9,0,3.3,1.6,3.3,3.3C33.2,40.8,31.6,42.3,29.7,42.3z M37.6,42.3c-1.9,0-3.3-1.6-3.3-3.3 c0-1.9,1.6-3.3,3.3-3.3c1.9,0,3.3,1.6,3.3,3.3S39.6,42.3,37.6,42.3z M45.6,42.3c-1.9,0-3.3-1.6-3.3-3.3c0-1.9,1.6-3.3,3.3-3.3 c1.9,0,3.3,1.6,3.3,3.3S47.5,42.3,45.6,42.3z"/><path fill="#00b956" d="M27,0.6c-14.9,0-27,12.1-27,27c0,13.1,9.1,23.8,21.3,26.3V29.6l0,0c0-1.1,1-2,2-2.2l0,0 h1.1h2.2c0.2,0,0.3-0.2,0.3-0.3L27,0.6L27,0.6z M21.8,22.8c-1.9,0-3.3-1.6-3.3-3.3c0-1.9,1.6-3.3,3.3-3.3c1.9,0,3.3,1.6,3.3,3.3 S23.6,22.8,21.8,22.8z"/></g>
+</svg><span style="color:#fff" title="Для входа в личный кабинет vvv1359friend">МегаФон</span>
+</a>
+<br />• <a href="http://2ip.ru/speed/"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" style="margin: 0px 0px -2px 0px; background-color: transparent; width:14px; height:14px">
+<g>
+<path style="fill:#ffffff; stroke:none" d="M395.225,277.325c-6.8,0-13.5-2.6-18.7-7.8c-71.4-71.3-187.4-71.3-258.8,0c-10.3,10.3-27.1,10.3-37.4,0 s-10.3-27.1,0-37.4c92-92,241.6-92,333.6,0c10.3,10.3,10.3,27.1,0,37.4C408.725,274.725,401.925,277.325,395.225,277.325z"/>
+<path style="fill:#ffffff;stroke:none" d="M467.925,204.625c-6.8,0-13.5-2.6-18.7-7.8c-111.5-111.4-292.7-111.4-404.1,0c-10.3,10.3-27.1,10.3-37.4,0 s-10.3-27.1,0-37.4c64-64,149-99.2,239.5-99.2s175.5,35.2,239.5,99.2c10.3,10.3,10.3,27.1,0,37.4 C481.425,202.025,474.625,204.625,467.925,204.625z"/>
+<path style="fill:#ffffff;stroke:none" d="M323.625,348.825c-6.8,0-13.5-2.6-18.7-7.8c-15.4-15.4-36-23.9-57.8-23.9s-42.4,8.5-57.8,23.9 c-10.3,10.3-27.1,10.3-37.4,0c-10.3-10.3-10.3-27.1,0-37.4c25.4-25.4,59.2-39.4,95.2-39.4s69.8,14,95.2,39.5 c10.3,10.3,10.3,27.1,0,37.4C337.225,346.225,330.425,348.825,323.625,348.825z"/>
+<circle style="fill:#ffffff;stroke:none" cx="247.125" cy="398.925" r="35.3"/>
+</g>
+</svg> Проверка скорости интернет-соединения</a>
+<br />• <a href="https://vms.drweb.ru/scan_file/" title="Проверить файл"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="margin: 0px -2px -5px 0px; background-color: transparent; width:16px; height:16px">
+<g style="fill:#6ab906; stroke:none" transform="matrix(1.1428424,0,0,1.1431837,-1.1432195,-338.11328)">
+<path d="m 5.8521,299.02 2.1517,-1.2001 2.166,1.2098 c 0.05335,-0.14681 0.08172,-0.29931 0.08172,-0.4579 0,-0.95039 -1.0025,-1.7198 -2.2375,-1.7198 -1.2363,0 -2.2384,0.76941 -2.2384,1.7198 -8.411e-4,0.15494 0.027672,0.30542 0.076481,0.44817 z m 5.6152,-0.12526 1.4783,-0.29931 0.30461,1.0724 0.73687,-2.3303 -2.9601,0.94633 z m 0.38919,1.4225 1.3587,0.32819 -0.28548,0.89998 2.0708,-1.1086 -3.3384,-0.98455 z m -1.5979,5.9883 3.2486,-3.9395 -1.7336,-1.0439 z m -0.22002,-9.1509 0.62139,0.65597 1.6702,-2.046 h -2.3689 l 0.89264,0.55429 z m -4.0687,0 -0.81539,-0.83612 0.89264,-0.5539 h -2.3689 l 1.6698,2.0464 z m -3.4681,5.2116 3.2483,3.9395 -1.5148,-4.9833 z m 0.55348,-3.7712 1.4779,0.29931 0.44042,-0.61084 -2.9593,-0.94633 0.73607,2.3303 z m -0.26922,2.0501 1.3583,-0.3282 0.1948,-0.86499 -3.3388,0.98497 2.0708,1.1086 z m 4.0667,-1.4864 0.28954,1.0952 h 0.014985 l 0.40018,-1.1851 h 0.92072 l 0.42334,1.1851 h 0.012987 l 0.24644,-1.0915 -1.1566,-0.65963 z m 4.2884,1.1326 -1.2079,-0.68851 -0.43511,1.3209 H 8.42042 L 8.0117,299.71193 H 7.997415 l -0.4079,1.2118 h -1.0842 l -0.43555,-1.3196 -1.2071,0.68646 c 0,0 -0.44003,1.5568 1.2379,2.8354 0.58805,0.44897 1.0272,0.73973 1.4217,0.87477 L 7.44904,303.77871 h 1.1078 l -0.074024,0.22612 c 0.39403,-0.13257 0.8304,-0.42416 1.4152,-0.87842 1.6641,-1.2924 1.2428,-2.835 1.2428,-2.835 z m -2.4588,3.107 h -1.3587 l -0.14681,-0.44451 h 1.6519 z M 8.9544,302.57402 H 7.0508 l -0.14681,-0.44451 h 2.1964 z m 0.27207,-0.82516 h -2.4478 l -0.14681,-0.44409 h 2.741 z" />
+</g></svg> Dr.WEB</a>
+<br />• <a href="http://meteoinfo.ru/pogoda" title="Фактическая погода">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="4 1 18 18"><title>Фактическая погода</title><desc/>
+<defs>
+<linearGradient id="a" x1="100%" x2="31.139%" y1="0%" y2="67.974%"><stop offset="0%" stop-color="#FFCD44"/><stop offset="100%" stop-color="#FFB403"/></linearGradient>
+<radialGradient id="b" cx="82.715%" cy="14.258%" fx="82.715%" fy="14.258%"><stop offset="0%" stop-color="#777AB4"/><stop offset="100%" stop-color="#777AB4" stop-opacity="0"/></radialGradient>
+<radialGradient id="c" cx="8.171%" cy="-6.535%" r="63.588%" fx="8.171%" fy="-6.535%"><stop offset="0%" stop-color="#777AB4"/><stop offset="100%" stop-color="#777AB4" stop-opacity="0"/></radialGradient>
+</defs>
+<g fill="none">
+<circle cx="16" cy="10" r="4" fill="url(#a)"/>
+<path fill="#FFB300" fill-rule="nonzero" d="M15.48 2.73l.26 1.477c.174.985-1.304 1.245-1.477.26l-.26-1.477c-.174-.985 1.304-1.245 1.477-.26zm2.257 12.803l.26 1.477c.174.985-1.304 1.245-1.477.26l-.26-1.477c-.174-.985 1.304-1.245 1.477-.26zm3.036-11.041l-.86 1.229c-.574.819-1.802-.041-1.229-.86l.86-1.229c.574-.819 1.802.041 1.229.86zm-7.456 10.649l-.86 1.229c-.574.819-1.802-.041-1.229-.86l.86-1.229c.574-.819 1.802.041 1.229.86zm-2.825-9.913l1.229.86c.819.574-.041 1.802-.86 1.229l-1.229-.86c-.819-.574.041-1.802.86-1.229zm10.649 7.456l1.229.86c.819.574-.041 1.802-.86 1.229l-1.229-.86c-.819-.574.041-1.802.86-1.229zm2.13-3.204l-1.477.26c-.985.174-1.245-1.304-.26-1.477l1.477-.26c.985-.174 1.245 1.304.26 1.477zm-12.803 2.257l-1.477.26c-.985.174-1.245-1.304-.26-1.477l1.477-.26c.985-.174 1.245 1.304.26 1.477z"/>
+<path fill="#000" fill-opacity=".02" d="M6 19.5c-2.209 0-4-1.791-4-4s1.791-4 4-4c.417 0 .818.064 1.196.182.563-1.842 2.277-3.182 4.304-3.182 2.485 0 4.5 2.015 4.5 4.5 0 .235-.018.465-.053.69.328-.123.682-.19 1.053-.19 1.657 0 3 1.343 3 3s-1.343 3-3 3h-11zM6 19.75c-2.209 0-4-1.791-4-4s1.791-4 4-4c.417 0 .818.064 1.196.182.563-1.842 2.277-3.182 4.304-3.182 2.485 0 4.5 2.015 4.5 4.5 0 .235-.018.465-.053.69.328-.123.682-.19 1.053-.19 1.657 0 3 1.343 3 3s-1.343 3-3 3h-11zM6 20c-2.209 0-4-1.791-4-4s1.791-4 4-4c.417 0 .818.064 1.196.182.563-1.842 2.277-3.182 4.304-3.182 2.485 0 4.5 2.015 4.5 4.5 0 .235-.018.465-.053.69.328-.123.682-.19 1.053-.19 1.657 0 3 1.343 3 3s-1.343 3-3 3h-11z"/>
+<path fill="#000" fill-opacity=".02" fill-rule="nonzero" d="M16.25 12.5c0-2.623-2.127-4.75-4.75-4.75-2.02 0-3.792 1.272-4.465 3.127-.335-.084-.682-.127-1.035-.127-2.347 0-4.25 1.903-4.25 4.25s1.903 4.25 4.25 4.25h11c1.795 0 3.25-1.455 3.25-3.25s-1.455-3.25-3.25-3.25c-.259 0-.515.03-.762.09l.012-.34z"/>
+<path fill="#FFF" d="M6 19c-2.209 0-4-1.791-4-4s1.791-4 4-4c.417 0 .818.064 1.196.182.563-1.842 2.277-3.182 4.304-3.182 2.485 0 4.5 2.015 4.5 4.5 0 .235-.018.465-.053.69.328-.123.682-.19 1.053-.19 1.657 0 3 1.343 3 3s-1.343 3-3 3h-11z"/>
+<circle cx="6" cy="15" r="4" fill="url(#b)" opacity=".24"/>
+<circle cx="17" cy="16" r="3" fill="url(#c)" opacity=".24"/>
+<circle cx="11.5" cy="12.5" r="4.5" fill="#FFF"/>
+</g>
+</svg> Гидрометцентр России</a>
+<!--svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="60 60 330 330" style="margin: 0px 0px -1px 0px; background-color:transparent; width: 22px; height: 16px">
+<g>
+<path style="fill: #fff" d="M374.4,219c0-20.8-8.4-40-22.4-53.6c-13.6-13.6-32.8-22.4-53.6-22.4c-14,0-27.6,4-39.2,10.8c-8.4,5.2-16,12-22,20 c-1.6-1.2-3.6-2.8-5.2-4c-17.6-12.4-38.8-19.2-61.2-19.2c-26.4,0-51.2,9.6-70,26C84,191,71.6,211,66,233.8 c-17.2,2-32.4,9.6-44,21.2C8.4,268.6,0,287,0,307.8c0,20.4,8.4,39.2,22,52.8c13.6,13.6,32,22,52.8,22H276 c24-0.4,45.2-9.6,60.4-25.2c15.2-15.2,24.8-36.4,24.8-60c0-10-1.6-20-5.2-28.8c5.2-6,9.6-12.8,12.4-20 C372.4,239.4,374.4,229,374.4,219z M320.8,344.6c-11.6,11.6-27.6,18.8-45.6,18.8H75.6c-15.2-1.6-28.4-7.6-38.4-17.6 c-9.6-9.6-16-23.2-16-38s6-28.4,16-38c9.6-9.6,23.2-16,38-16c1.6,0,3.6-0.4,4.8-1.2c2.4-1.6,4-4,4.4-6.8 c3.2-21.2,14-39.6,29.2-52.8c15.2-13.2,35.2-20.8,56.8-20.8c18,0,35.2,5.6,49.6,15.6c11.2,7.6,20.8,18.4,27.2,30.8 c-2.4,0.8-4.4,1.6-6.4,2.8c-10.8,4.8-20.8,12-28.8,21.2c-3.6,4.4-3.2,10.8,0.8,14.4c4.4,3.6,10.8,3.2,14.4-0.8 c6-6.8,13.6-12.4,21.6-16c8-3.6,17.2-5.6,26.4-5.6c17.6,0,34,7.2,45.6,18.8c11.6,11.6,18.8,27.6,18.8,45.6S332.4,333,320.8,344.6z M350,240.2c-1.2,2.8-2.4,5.2-4,8c-2.8-4-6-7.6-9.2-10.8c-15.2-15.2-36.4-24.8-60-24.8c-2.4,0-5.2,0-7.6,0.4 c-4-9.2-9.6-17.2-16-24.8c4.4-6.8,10.4-12.4,17.2-16.8c8.4-5.2,18.4-8,28.8-8c15.2,0,29.2,6,39.2,16s16,24,16,39.2 C354.4,226.2,352.8,233.4,350,240.2z"/>
+<path style="fill: #fff" d="M406,111.8c-4-4-10.4-4-14.4,0l-22,22c-4,4-4,10.4,0,14.4s10.4,4,14.4,0l22-22C410,122.2,410,115.8,406,111.8z"/>
+<path style="fill: #fff" d="M299.2,67.8c-5.6,0-10.4,4.4-10.4,10V109c0,5.6,4.8,10.4,10.4,10.4c5.6,0,10.4-4.8,10.4-10.4V78.2 C309.6,72.6,304.8,67.8,299.2,67.8z"/>
+<path style="fill: #fff" d="M228.4,133.8l-22-22c-3.6-4-10.4-4-14.4,0s-4,10.4,0,14.4l22,22c4,4,10.4,4,14.4,0S232.4,137.8,228.4,133.8z"/>
+<path style="fill: #fff" d="M440,208.6h-30.8c-5.6,0-10.4,4.8-10.4,10.4s4.8,10.4,10.4,10.4H440c5.6,0,10.4-4.8,10.4-10.4 C450.4,213,445.6,208.6,440,208.6z"/>
+<path style="fill: #fff" d="M406,311.4l-22-22c-4-4-10.4-4-14.4,0s-4,10.4,0,14.4l22,22c4,4,10.4,4,14.4,0S410,315.4,406,311.4z"/></g></svg-->
+
+<br />• <a href="http://www.calend.ru/"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 13 100 100" style="margin: 0px 0px -5px 0px; background-color:transparent; width: 18px; height: 24px">
+<g transform="translate(-1.5969312,-0.93617651)">
+<path style="fill:none;stroke:#ffffff;stroke-width:5" d="m 21.1507,51.229035 28.813998,7.663297 C 51.892328,79.509901 41.077069,104.33981 22.68336,101.50026 6.4164572,94.111627 8.4104399,66.172135 21.1507,51.229035 z" />
+<path style="fill:none;stroke:#ffffff;stroke-width:5;stroke-linecap:round" d="m 3.6783827,119.27911 26.0552103,7.35677" />
+<path style="fill:none;stroke:#ffffff;stroke-width:5" d="m 22.989892,101.8068 -6.43717,20.84416" />
+<path style="fill:none;stroke:#ffffff;stroke-width:5" d="M 11.035148,77.284245 48.125506,76.671182" />
+<path d="M 53.855976,45.025214 82.641279,37.254826 C 94.61944,54.146349 97.668106,81.05731 80.318911,87.795042 62.537044,89.52975 50.294137,64.336449 53.855976,45.025214 z" style="fill:none;stroke:#ffffff;stroke-width:5" />
+<path d="m 72.749542,112.69447 26.242856,-6.65646" style="fill:none;stroke:#ffffff;stroke-width:5;stroke-linecap:round" />
+<path d="m 80.737645,87.907248 4.847327,21.270162" style="fill:none;stroke:#ffffff;stroke-width:5" />
+<path d="M 55.485406,63.415942 92.575767,62.802879" style="fill:none;stroke:#ffffff;stroke-width:5" />
+<path style="fill:none;stroke:#ffffff;stroke-width:4" d="M 36.783827,37.128568 C 29.845711,36.329239 24.563293,36.94233 21.404303,33.921214 c -3.327083,-3.16506 -2.099081,-8.002259 2.467489,-8.799306 5.725977,-0.215531 7.157609,4.382862 12.912035,12.00666 z" />
+<path d="M 45.814299,21.212467 C 41.013191,16.140412 36.572538,13.214594 36.094547,8.869725 35.580314,4.3065401 39.630311,1.390376 43.640839,3.7151371 c 4.524893,3.5154807 2.665796,7.9582899 2.17346,17.4973299 z" style="fill:none;stroke:#ffffff;stroke-width:4" />
+<path style="fill:none;stroke:#ffffff;stroke-width:4" d="m 61.694839,27.91656 c 1.161344,-6.886773 0.825555,-12.194039 4.007859,-15.190587 3.334849,-3.1568775 8.101151,-1.677398 8.65811,2.924628 -0.08444,5.72941 -4.751458,6.918417 -12.665969,12.265959 z" />
+</g>
+</svg> Календарь праздников</a>
+<br />• <a href="https://time100.ru"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" style="width: 14px; height: 14px; margin:0px 1px -2px -1px; background-color: transparent" viewBox="0 1 107 107"><g><path style="fill:#ffffff" d="M 34.474886,30.672685 62.100457,50.535699 107.30594,14.462639 62.328767,69.942091 z" />
+<path style="fill:#ff0000" d="M 71.917808,8.9831872 C 38.132169,-6.7184285 5.6389299,12.816836 6.1643836,43.914694 5.5325976,90.963551 71.515032,127.83696 102.96804,93.001452 76.095682,118.11201 17.761571,89.625998 17.579909,43.914694 17.650431,13.259964 44.59291,0.48222775 71.917808,8.9831872 z" /></g></svg> Точное время</a>
+
+<br /><span style="cursor: pointer" onclick="if(document.getElementById('yandex').style.display=='none'){document.getElementById('yandex').style.display='block'}else{document.getElementById('yandex').style.display='none'}">• <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 37 103 103" style="margin:0px 1px -1px 0px; background-color: transparent; width:8px; height: 14px"><path id="y" d="M83.1452991,0 L56.2637363,0 C29.3821734,0 6.25152625,20.004884 6.25152625,58.7643468 C6.25152625,81.8949939 17.5042735,99.3992674 36.8840049,108.151404 L0.625152625,173.167277 C-0.625152625,175.042735 0.625152625,176.918193 2.5006105,176.918193 L19.3797314,176.918193 C20.6300366,176.918193 21.8803419,176.29304 22.5054945,175.042735 L55.6385836,111.277167 L67.5164835,111.277167 L67.5164835,175.042735 C67.5164835,175.667888 68.1416361,176.918193 69.3919414,176.918193 L84.3956044,176.918193 C85.6459096,176.918193 86.2710623,176.29304 86.2710623,175.042735 L86.2710623,2.5006105 C85.6459096,0.625152625 85.020757,0 83.1452991,0 L83.1452991,0 Z M67.5164835,96.2735043 L57.5140415,96.2735043 C14.3785104,96.2735043 17.5042735,15.003663 55.6385836,15.003663 L68.1416361,15.003663 L68.1416361,96.2735043 L67.5164835,96.2735043 Z" fill="#ff0000"/></svg><span style="font-size: 12px">ндекс сервисы</span></span>
+
+<div id="yandex" style="position: absolute; display: none; width: 169px; margin: 3px 0px 0px -3px; padding: 5px 5px 13px 5px; border-radius: 5px; background-color: #333; opacity: 0.99"><a href="https://pda.tv.yandex.ru/?grid=my">• <svg style="margin:5px 1px -1px 0px; background-color: transparent; width:8px; height:14px" viewbox="0 37 103 103"><use xlink:href="#y" /></svg>ндекс Телепрограмма</a>
+<br /><a href="http://slovari.yandex.ru/?st_translate=1">• <svg style="margin:5px 1px -1px 0px; background-color: transparent; width:8px; height:14px" viewbox="0 37 103 103"><use xlink:href="#y" /></svg>ндекс Переводчик</a>
+<br /><a href="http://maps.yandex.ru/">• <svg style="margin:5px 1px -1px 0px; background-color: transparent; width:8px; height:14px" viewbox="0 37 103 103"><use xlink:href="#y" /></svg>ндекс Карты</a>
+<br /><a href="https://yandex.ru/metro/moscow">• <svg style="margin:5px 1px -1px 0px; background-color: transparent; width:8px; height:14px" viewbox="0 37 103 103"><use xlink:href="#y" /></svg>ндекс Метро</a>
+<br /><a href="https://yandex.ru/time/">• <svg style="margin:5px 1px -1px 0px; background-color: transparent; width:8px; height:14px" viewbox="0 37 103 103"><use xlink:href="#y" /></svg>ндекс Время</a>
+<br /><a href="https://yandex.ru/pogoda/moscow">• <svg style="margin:5px 1px -1px 0px; background-color: transparent; width:8px; height:14px" viewbox="0 37 103 103"><use xlink:href="#y" /></svg>ндекс Погода</a>
+<br /><a href="https://yandex.ru/images/search?source=landing&rpt=imageview">• <svg style="margin:5px 1px -1px 0px; background-color: transparent; width:8px; height:14px" viewbox="0 37 103 103"><use xlink:href="#y" /></svg>ндекс Поиск по фото</a>
+</div>
+
+<br />• <!--a href="F:\FFmpeg\My FFmpeg for WEB\index.htm"--><a href="D:\My FFmpeg for WEB\index.htm"><svg style="margin:0px 1px 0px 0px; width:14px; height:14px" viewbox="-7 3 79 43" xmlns="http://www.w3.org/2000/svg" x="0" y="0"><path fill="none" stroke="#00b956" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" d="M 0,0 20,0 0,20 0,40 40,0 60,0 0,60 20,60 60,20 60,40 40,60 60,60"/></svg> FFmpeg</a>
+
+<br />• <a href="https://www.onlineocr.net/ru/"><svg style="background-color:transparent; margin:0px 1px -2px 0px; width:14px; height:14px" viewbox="0 17 79 43" xmlns="http://www.w3.org/2000/svg" x="0" y="0"><title>Конвертировать PDF в Word или картинку в текст</title><desc/><g><path style="fill:#ff0000;stroke:#ff0000;stroke-width:1px" d="m 3.4136546,46.840095 26.4056224,3.514055 -7.429719,8.835342 c 17.405908,13.61175 46.346037,1.648801 44.97992,-25.200803 l 10.341366,1.204819 c 1.786743,32.541573 -33.59662,52.255078 -61.546185,30.722891 l -7.2289159,8.232932 z" />
+<path style="fill:#ff0000;stroke:#ff0000;stroke-width:1px" d="M 77.57509,29.454263 51.169467,25.940208 58.599186,17.104866 C 41.193278,3.4931159 12.253149,15.456065 13.619266,42.305669 L 3.2779002,41.10085 C 1.4911572,8.5592769 36.87452,-11.154228 64.824085,10.377959 l 7.228916,-8.2329321 z" />
+</g></svg> <span title="Конвертировать PDF в Word или картинку в текст">Оптическое (OCR) распознавание текста</a>
+
+<br />• <a href="https://onlineimagetools.com/convert-image-to-base64"><svg style="background-color:transparent; margin:0px 1px -2px 0px; width:14px; height:14px" viewbox="0 17 79 43" xmlns="http://www.w3.org/2000/svg" x="0" y="0"><title>Конвертер</title><desc/><g><path style="fill:#ff0000;stroke:#ff0000;stroke-width:1px" d="m 3.4136546,46.840095 26.4056224,3.514055 -7.429719,8.835342 c 17.405908,13.61175 46.346037,1.648801 44.97992,-25.200803 l 10.341366,1.204819 c 1.786743,32.541573 -33.59662,52.255078 -61.546185,30.722891 l -7.2289159,8.232932 z" />
+<path style="fill:#ff0000;stroke:#ff0000;stroke-width:1px" d="M 77.57509,29.454263 51.169467,25.940208 58.599186,17.104866 C 41.193278,3.4931159 12.253149,15.456065 13.619266,42.305669 L 3.2779002,41.10085 C 1.4911572,8.5592769 36.87452,-11.154228 64.824085,10.377959 l 7.228916,-8.2329321 z" />
+</g></svg> <span title="Конвертер">Изображение в base64</a>
+
+<br />• <a href="https://cloudconvert.com/eps-to-svg"><svg style="background-color:transparent; margin:0px 1px -2px 0px; width:14px; height:14px" viewbox="0 17 79 43" xmlns="http://www.w3.org/2000/svg" x="0" y="0"><title>Конвертер</title><desc/><g><path style="fill:#ff0000;stroke:#ff0000;stroke-width:1px" d="m 3.4136546,46.840095 26.4056224,3.514055 -7.429719,8.835342 c 17.405908,13.61175 46.346037,1.648801 44.97992,-25.200803 l 10.341366,1.204819 c 1.786743,32.541573 -33.59662,52.255078 -61.546185,30.722891 l -7.2289159,8.232932 z" />
+<path style="fill:#ff0000;stroke:#ff0000;stroke-width:1px" d="M 77.57509,29.454263 51.169467,25.940208 58.599186,17.104866 C 41.193278,3.4931159 12.253149,15.456065 13.619266,42.305669 L 3.2779002,41.10085 C 1.4911572,8.5592769 36.87452,-11.154228 64.824085,10.377959 l 7.228916,-8.2329321 z" />
+</g></svg> <span title="Конвертер">EPS в SVG</a>
+
+<br />• <a href="https://mysmsbox.ru/phone-search/" title="Проверка номера">
+
+<!--svg style="background-color:transparent; margin: 3px -2px -3px 1px; width:16px; height:18px" viewbox="-39 0 630 630" xmlns="http://www.w3.org/2000/svg" x="0" y="0"><title>Проверка номера</title><desc/>
+  <g>
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:49;stroke-linecap:round"
+       d="m 293.71581,136.01064 c -20.19833,-29.16313 -4.96545,-95.096571 53.87567,-96.130443 56.7743,0.154126 67.69184,52.600074 64.04531,73.453333 -10.83183,56.73006 -65.66493,57.92998 -61.96142,100.43122" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:65;stroke-linecap:round"
+       d="m 349.32754,269.48662 10e-6,1.49285" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:55"
+       d="m 113.69024,9.3719736 c 16.68125,-3.2005509 49.594,59.4453044 68.34896,97.7720364 11.15695,24.17867 -12.60485,43.56888 -27.5959,50.45662 -17.9894,8.89492 -35.28533,29.94618 -40.75306,55.64838 -3.25927,21.56315 1.24809,54.53017 28.38684,111.80924 26.69352,44.93845 52.8177,75.8221 83.33334,91.17647 16.29145,5.68321 38.246,7.58011 57.97672,3.17514 22.75237,-6.14456 26.19171,-22.18952 59.33599,-18.34895 12.84167,1.26066 28.28921,27.96015 43.63533,55.95773 13.20682,24.09464 26.20088,39.25353 23.87815,60.15194 0.0109,20.18432 -51.19118,51.66687 -79.69027,49.76604 C 288.49621,566.57851 247.36883,546.35223 207.29542,513.99544 162.79559,478.47424 126.16077,425.51172 92.077073,371.83858 57.474123,315.08636 14.227776,216.65322 13.924196,148.77709 14.462156,112.83333 20.273088,78.594721 35.960751,51.105435 45.5295,35.259757 93.885313,4.2614502 113.69024,9.3719736 z" />
+  </g>
+</svg-->
+
+<svg style="width:20px; height:14px; background-color: transparent; margin: 0px -2px -2px -2px" viewBox="4 4 22 22" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><title>Проверка номера</title><desc/><path style="fill:#ffffff;stroke:#ffffff;stroke-width:1" d="M28.7,10.2c-2.5-3-7.6-4.8-13.7-4.8c0,0,0,0,0,0h0c0,0,0,0,0,0c-6,0-11.2,1.8-13.7,4.8c-1,1.2-1.4,2.6-1.1,4  c0.2,1.2,1,2.3,2,2.8c0.6,0.3,1.3,0.4,1.9,0.4c0.3,0,0.7,0,1-0.1c-0.2,0.6-0.3,1.2-0.4,1.9c-0.2,1.8,0.1,3.1,1,4.1  c1,1.2,2.6,1.3,3.2,1.3c0.2,0,0.3,0,0.3,0h11.7c1.3,0,2.5-0.5,3.2-1.4c1-1.2,1.2-2.9,1.1-4c-0.1-0.6-0.2-1.3-0.4-1.9  c0.3,0.1,0.7,0.1,1.1,0.1c0.6,0,1.3-0.1,1.9-0.4c1-0.5,1.8-1.6,2-2.8C30,12.8,29.7,11.3,28.7,10.2z M23,22.2  c-0.5,0.6-1.2,0.9-2.1,0.9l-11.8,0c-0.1,0-1.5,0.1-2.3-0.8c-0.5-0.6-0.7-1.6-0.6-2.9c0.5-4,3.2-6.4,3.7-6.8c1.4-1.1,3.3-1.8,5.2-1.8  c1.9,0,3.6,0.6,4.9,1.8c1.9,1.6,3.3,4.3,3.7,6.8C23.8,20.2,23.7,21.4,23,22.2z M28.3,13.9c-0.2,0.8-0.6,1.5-1.3,1.8  c-1.1,0.6-2.6,0.1-3-0.1c-0.7-1.6-1.8-3-3.1-4.1c-1.6-1.4-3.7-2.1-5.9-2.1c-2.2,0-4.4,0.8-6.1,2.1c-0.4,0.3-2.1,1.8-3.2,4.2  c-0.5,0.2-1.8,0.6-2.8,0c-0.6-0.3-1.1-1-1.3-1.8c-0.2-0.9,0.1-1.9,0.8-2.7C4.7,8.5,9.4,6.9,15,6.9c5.6,0,10.3,1.6,12.5,4.3  C28.2,12,28.5,12.9,28.3,13.9z M15,12.4c-2.2,0-4.1,1.6-4.1,3.5s1.8,3.5,4.1,3.5c2.2,0,4.1-1.6,4.1-3.5S17.2,12.4,15,12.4z M15,17.9  c-1.4,0-2.6-0.9-2.6-2s1.1-2,2.6-2c1.4,0,2.6,0.9,2.6,2S16.4,17.9,15,17.9z" /></svg> Проверка номера</a>
+
+<br />• <span style="cursor: pointer; font-size: 12px" onclick="if(document.getElementById('post').style.display=='none'){document.getElementById('post').style.display='block'}else{document.getElementById('post').style.display='none'}"><svg version="1.1" viewBox="0 0 277 188" style="width:16px; height:16px; margin: 0px 0px -3px 0px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Почта</title><desc/><defs><rect height="24" id="path-1" width="44" x="119" y="20"/><mask fill="white" height="24" id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" width="44" x="0" y="0"><use xlink:href="#path-1"/></mask><polygon id="path-3" points="134.5 90 0 0 269 0"/><filter filterUnits="objectBoundingBox" height="200%" id="filter-4" width="200%" x="-50%" y="-50%"><feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/><feColorMatrix in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/></filter><polygon id="path-5" points="0 179 1.26605797e-14 8 98 80"/><filter filterUnits="objectBoundingBox" height="200%" id="filter-6" width="200%" x="-50%" y="-50%"><feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/><feColorMatrix in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/></filter><polygon id="path-7" points="269 8 269 179 171 80"/><filter filterUnits="objectBoundingBox" height="200%" id="filter-8" width="200%" x="-50%" y="-50%"><feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/><feColorMatrix in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/></filter><path d="M107.392857,90 C107.392857,90 125.464286,99 134.5,99 C143.535714,99 161.607143,90 161.607143,90 L261,180 L8,180 L107.392857,90 L107.392857,90 Z" id="path-9"/><filter filterUnits="objectBoundingBox" height="200%" id="filter-10" width="200%" x="-50%" y="-50%"><feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/><feColorMatrix in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/></filter></defs><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g id="mail" transform="translate(4.000000, 0.000000)"><use fill="#D8D8D8" id="Rectangle-341" mask="url(#mask-2)" stroke="#979797" stroke-width="2" xlink:href="#path-1"/><g id="Combined-Shape"><g><use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"/><use fill="#FBF0B8" fill-rule="evenodd" xlink:href="#path-3"/></g><g><use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"/><use fill="#FBF0B8" fill-rule="evenodd" xlink:href="#path-5"/></g><g><use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"/><use fill="#FBF0B8" fill-rule="evenodd" xlink:href="#path-7"/></g><g><use fill="black" fill-opacity="1" filter="url(#filter-10)" xlink:href="#path-9"/><use fill="#FBF0B8" fill-rule="evenodd" xlink:href="#path-9"/></g></g></g></g></svg> Почта</span>
+<div id="post" style="position: absolute; display: none; width: 169px; margin: 3px 0px 0px -3px; padding: 5px 5px 13px 5px; border-radius: 5px; background-color: #333; opacity: 0.99">
+<a href="https://auth.mail.ru/cgi-bin/auth" target="_blank">@ mail.ru</a>
+<br />
+<a href="https://mail.yandex.ru/?uid=10521744#inbox" target="_blank">@ yandex</a>
+<br />
+<a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">@ gmail</a>
+<br />
+<a href="https://outlook.live.com/mail/0/inbox" target="_blank">@ hotmail</a>
+<br />
+
+</div>
+
+<br />• <span style="cursor: pointer; font-size: 12px" onclick="if(document.getElementById('cloud').style.display=='none'){document.getElementById('cloud').style.display='block'}else{document.getElementById('cloud').style.display='none'}">
+<svg style="background-color: transparent; margin:0px 0px -3px 0px; width:16px; height:16px" viewbox="-13 -30 565 565" xmlns="http://www.w3.org/2000/svg" x="0" y="0"><linearGradient id="linear-gradient" x1="0%" y1="60%" x2="60%" y2="100%">
+<stop offset="10%" stop-color="#bddbff"/>
+<stop offset="100%" stop-color="#36a9e1"/>
+</linearGradient>
+<path style="fill:url(#linear-gradient);stroke:#feffff;stroke-width:40;stroke-miterlimit:4" d="m 412.474,359.25099 -292.948,0 c -60.393,0 -109.526,-49.133 -109.526,-109.525 0,-49.761 33.878,-93.29 81.437,-105.875 C 93.639,69.665986 154.674,9.999986 229.382,9.999986 c 22.248,0 43.489,5.158 63.134,15.332 17.069,8.839 32.332,21.374 44.434,36.445 7.431,-1.961 15.02,-2.952 22.633,-2.952 48.652,0 88.331,39.16 89.168,87.616004 20.006,7.049 37.887,20.002 50.827,36.932 14.67,19.193 22.424,42.137 22.424,66.352 -0.002,60.393 -49.135,109.526 -109.528,109.526 z" />
+<path style="fill:#ffffff" d="m 161.219,122.03299 h -15.615 c 0,-35.251004 28.679,-63.929004 63.929,-63.929004 v 15.615 c -26.641,0.001 -48.314,21.674 -48.314,48.314004 z" />
+<path d="m 249.4434,465.92353 -27.78544,0 0,35.07538 c 0,6.30045 -5.73161,11.90509 -12.03208,11.90509 l -28.81078,0 c -6.30046,0 -11.914,-5.60464 -11.914,-11.90509 l 0,-35.07538 -27.90988,0 c -3.72415,0 -6.85026,-1.43734 -8.36252,-4.34251 -1.51227,-2.90517 -1.13896,-6.31316 0.99802,-9.36435 l 53.4744,-67.68743 c 1.96937,-2.80994 4.9266,-4.38569 8.11366,-4.38569 3.18832,0 6.14555,1.63035 8.11492,4.44029 l 53.47693,67.77504 c 2.13825,3.05119 2.51028,6.31316 0.99929,9.21833 -1.51226,2.90517 -4.6371,4.34632 -8.36252,4.34632 z" style="fill:#ffffff" />
+<path d="m 384.0361,427.12402 -27.78544,0 0,-35.07536 c 0,-6.30046 -5.73162,-11.90511 -12.03208,-11.90511 l -28.81079,0 c -6.30046,0 -11.91399,5.60465 -11.91399,11.90511 l 0,35.07536 -27.90987,0 c -3.72415,0 -6.85027,1.43735 -8.36254,4.34252 -1.51226,2.90517 -1.13895,6.31316 0.99802,9.36435 l 53.47441,67.68742 c 1.96937,2.80994 4.9266,4.38569 8.11365,4.38569 3.18833,0 6.14556,-1.63035 8.11493,-4.44029 l 53.47693,-67.77503 c 2.13825,-3.05119 2.51028,-6.31316 0.99929,-9.21833 -1.51226,-2.90517 -4.6371,-4.34633 -8.36252,-4.34633 z" style="fill:#ffffff" /></svg> Облако</span>
+
+<div id="cloud" style="position: absolute; display: none; width: 169px; margin: 3px 0px 0px -3px; padding: 5px 5px 13px 5px; border-radius: 5px; background-color: #333; opacity: 0.99">
+<a href="https://disk.yandex.ru/client/disk">• <svg xmlns="http://www.w3.org/2000/svg" style="background-color: transparent; width:18px; height:16px" viewbox="3 0 59 59">
+<ellipse style="opacity:0.2" cx="20.378" cy="42.541" rx="30.63" ry="12.561" transform="matrix(0.97235311,-0.23351536,0.28643385,0.95810002,0,0)"/>
+<path style="fill:#4f4f4f" d="m 29.999998,12.999996 c -13.999999,0 -10.743715,12.341773 -17.911727,16.194192 -7.2721055,4.12572 -3.2655457,7.819154 -2.0882718,11.805806 1.9861638,6.647464 7.5499098,1.950844 23.9999978,-2 16.44929,-3.949936 19.986411,-3.35303 18,-10 -1.19107,-3.942193 2.718231,-7.595767 -5.782284,-7.943665 -6.909136,0.378424 -6.217716,-8.056333 -16.217715,-8.056333 z"/>
+<ellipse style="fill:#2e72de" cx="20.665" cy="41.567" rx="30.63" ry="12.561" transform="matrix(0.97235311,-0.23351536,0.28643385,0.95810002,0,0)"/>
+<ellipse style="opacity:0.2" cx="23.53" cy="51.677" rx="14.326" ry="6.305" transform="matrix(0.97262806,-0.23236752,0.21506239,0.97660031,0,0)"/>
+<ellipse style="fill:#ffffff" cx="23.745" cy="50.704" rx="14.326" ry="6.305" transform="matrix(0.97262806,-0.23236752,0.21506239,0.97660031,0,0)"/>
+<path style="opacity:0.1;fill:#ffffff" d="M 43.121094 21.007812 A 12.538587 30.639578 77.128662 0 0 28.402344 22.964844 A 12.538587 30.639578 77.128662 0 0 2.0761719 41.003906 A 12.538587 30.639578 77.128662 0 1 28.402344 23.964844 A 12.538587 30.639578 77.128662 0 1 43.121094 22.007812 A 12.538587 30.639578 77.128662 0 1 61.785156 28.847656 A 12.538587 30.639578 77.128662 0 1 61.941406 29.802734 A 12.538587 30.639578 77.128662 0 0 61.785156 27.847656 A 12.538587 30.639578 77.128662 0 0 43.121094 21.007812 z"/>
+<path style="opacity:0.1;fill:#ffffff" d="M 30 13 C 16.000001 13 19.255903 25.34094 12.087891 29.193359 C 8.4726165 31.244431 7.6466907 33.1887 7.8730469 35.115234 C 8.0298519 33.514239 9.097133 31.890121 12.087891 30.193359 C 19.255903 26.34094 16.000001 14 30 14 C 39.999999 14 39.307661 22.435065 46.216797 22.056641 C 50.764864 22.242778 51.751939 23.379471 51.876953 24.996094 C 52.011632 22.859011 51.652664 21.279113 46.216797 21.056641 C 39.307661 21.435065 39.999999 13 30 13 z M 51.763672 27.603516 C 51.727451 28.372265 51.751935 29.178955 52 30 C 52.245423 30.82124 52.403941 31.53002 52.466797 32.152344 C 52.55657 31.317983 52.388771 30.300915 52 29 C 51.857531 28.528459 51.79016 28.061635 51.763672 27.603516 z"/>
+</svg>
+<svg style="margin:5px 1px -1px 0px; background-color: transparent; width:8px; height:14px" viewbox="0 37 103 103"><use xlink:href="#y" /></svg>ндекс Диск</a>
+
+<br /><a href="https://cloud.mail.ru/home/">• <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="background-color: transparent; margin:4px 0px -2px 2px; width:14px; height:14px; fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+<path d="M20.813,16c0,2.654 -2.159,4.813 -4.813,4.813c-2.654,0 -4.813,-2.159 -4.813,-4.813c0,-2.654 2.159,-4.813 4.813,-4.813c2.654,0 4.813,2.159 4.813,4.813m-4.813,-16c-8.822,0 -16,7.178 -16,16c0,8.822 7.178,16 16,16c3.232,0 6.349,-0.962 9.013,-2.783l0.046,-0.032l-2.156,-2.506l-0.036,0.024c-2.051,1.319 -4.426,2.017 -6.867,2.017c-7.014,0 -12.72,-5.706 -12.72,-12.72c0,-7.014 5.706,-12.72 12.72,-12.72c7.014,0 12.72,5.706 12.72,12.72c0,0.909 -0.101,1.829 -0.3,2.734c-0.402,1.651 -1.558,2.157 -2.426,2.09c-0.873,-0.071 -1.894,-0.693 -1.901,-2.215l0,-1.241l0,-1.368c0,-4.463 -3.63,-8.093 -8.093,-8.093c-4.463,0 -8.093,3.63 -8.093,8.093c0,4.463 3.63,8.093 8.093,8.093c2.168,0 4.201,-0.848 5.734,-2.389c0.891,1.387 2.344,2.257 3.997,2.389c0.142,0.012 0.287,0.018 0.431,0.018c1.163,0 2.317,-0.389 3.247,-1.096c0.959,-0.728 1.675,-1.781 2.071,-3.046c0.063,-0.204 0.179,-0.672 0.18,-0.675l0.003,-0.017c0.233,-1.015 0.337,-2.027 0.337,-3.277c0,-8.822 -7.178,-16 -16,-16" style="fill:#ff9e00;fill-rule:nonzero;"/></svg> Облако Mail.ru</a>
+
+<br /><a href="https://onedrive.live.com/?id=root&cid=E4BA2162B61E9CAE">• <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" style="width: 16px; height: 16px; margin: 0px -1px -3px 1px"><linearGradient id="NqAl5bicO~9wmXV3Tvu1Ra" x1="24.5" x2="24.5" y1="7.032" y2="22.852" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0571bf"/><stop offset="1" stop-color="#0268ba"/></linearGradient><path fill="url(#NqAl5bicO~9wmXV3Tvu1Ra)" d="M24.5,7C16.492,7,10,13.492,10,21.5S16.492,36,24.5,36S39,29.508,39,21.5S32.508,7,24.5,7	L24.5,7z"/><linearGradient id="NqAl5bicO~9wmXV3Tvu1Rb" x1="14.228" x2="14.228" y1="14.219" y2="32.761" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1684da"/><stop offset="1" stop-color="#107cd4"/></linearGradient><path fill="url(#NqAl5bicO~9wmXV3Tvu1Rb)" d="M16.155,14.972c-1.32-0.505-2.753-0.781-4.25-0.781C5.33,14.191,0,19.521,0,26.096	c0,2.476,0.757,4.774,2.05,6.678c0.061-0.026,16.445-6.889,26.406-10.888C22.952,18.568,17.903,15.641,16.155,14.972z"/><linearGradient id="NqAl5bicO~9wmXV3Tvu1Rc" x1="38.228" x2="38.228" y1="18.746" y2="34.097" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#138cdd"/><stop offset="1" stop-color="#0c7dd4"/></linearGradient><path fill="url(#NqAl5bicO~9wmXV3Tvu1Rc)" d="M48,28.373c0-5.317-4.31-9.627-9.627-9.627c-0.997,0-1.958,0.152-2.863,0.433	c-0.996,0.31-3.652,1.342-7.054,2.708c8.377,5.05,17.79,10.996,18.252,11.288C47.525,31.76,48,30.123,48,28.373z"/><linearGradient id="NqAl5bicO~9wmXV3Tvu1Rd" x1="17.13" x2="31.145" y1="24.083" y2="41.333" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#27a7ea"/><stop offset="1" stop-color="#1c94e3"/></linearGradient><path fill="url(#NqAl5bicO~9wmXV3Tvu1Rd)" d="M46.709,33.175c-0.463-0.292-9.875-6.238-18.252-11.288	C18.495,25.885,2.111,32.748,2.05,32.774C2.467,33.388,5.627,38,11.904,38c5.03,0,16.176,0,26.354,0	C43.669,38,46.148,34.146,46.709,33.175z"/></svg> OneDrive</a>
+
+<br /><a href="https://drive.google.com/drive/my-drive">• <svg xmlns="http://www.w3.org/2000/svg" style="margin:4px 0px -2px 2px; width: 14px; height: 14px" viewBox="0 0 1444 1444">
+<path fill="#3777e3" d="M240.525 1249.993l240.492-416.664h962.044l-240.514 416.664z"/>
+<path fill="#ffcf63" d="M962.055 833.329h481.006L962.055 0H481.017z"/><path fill="#11a861" d="M0 833.329l240.525 416.664 481.006-833.328L481.017 0z"/></svg> Goole Drive</a>
+<br /><a href="https://www.dropbox.com/home">• <svg viewBox="0 0 36 32" xmlns="http://www.w3.org/2000/svg" style="margin:4px 0px -3px 2px; width:14px; height:14px; background-color:transparent"><g transform="translate(-1)" fill="#0065ff"><path d="M0.948051948 6.42987013L9.98077922 12.1844156 19.0136364 6.42987013 9.98103896 0.675324675z"/><path d="M19 6.42987013L28.0328571 12.1844156 37.0657143 6.42987013 28.0331169 0.675324675z"/><path d="M0.948051948 17.8585714L9.98090909 23.6132468 19.0137662 17.8585714 9.98090909 12.1038961z"/><path d="M28.032987 12.1038961L19 17.8585714 28.032987 23.6132468 37.0658442 17.8585714z"/><path d="M10.038961 25.5202597L19.0718182 31.2749351 28.1048052 25.5202597 19.0718182 19.7662338z"/></g></svg> Dropbox</a>
+<br /><a href="https://www.icloud.com/">• <svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 -12 80 52"
+   style="margin: 0px 0px 0px 2px">
+  <title>iCloud</title>
+  <defs>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1070"
+       id="linearGradient1072"
+       x1="-108.90347"
+       y1="2124.834"
+       x2="-1137.1982"
+       y2="2110.6506"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.07740541,0,0,0.07740541,88.373952,-128.02586)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1070">
+      <stop
+         style="stop-color:#3e82f4;stop-opacity:1"
+         offset="0"
+         id="stop1066" />
+      <stop
+         style="stop-color:#93dcf7;stop-opacity:1"
+         offset="1"
+         id="stop1068" />
+    </linearGradient>
+  </defs>
+
+  <path
+     style="opacity:1;fill:url(#linearGradient1072);fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 45.864371,0.751258 A 21.518704,21.518704 0 0 0 27.127725,11.764594 11.804325,11.804325 0 0 0 21.976186,10.573131 11.804325,11.804325 0 0 0 10.35494,20.48888 16.255137,16.255137 0 0 0 0.37795502,35.481798 16.255137,16.255137 0 0 0 16.640956,51.721206 16.255137,16.255137 0 0 0 18.679799,51.57426 h 45.187983 a 15.130063,15.202083 0 0 0 0.712824,0.03447 15.130063,15.202083 0 0 0 0.679264,-0.03447 h 1.082164 V 51.49383 A 15.130063,15.202083 0 0 0 79.703385,36.406573 V 36.3774 A 15.130063,15.202083 0 0 0 67.386251,21.477308 21.518704,21.518704 0 0 0 45.864371,0.751258 Z"
+     id="rect955" />
+</svg> iCloud</a>
+
+</div>
+
+<br />
+• <a href="https://app.netlify.com/login/email" target="_blank" title="Для входа:<br />• vvv131959@gmail.com<br />• v2000v-f..d">Netlify</a>
+
+
+
+<!--form action="http://win.mail.ru/cgi-bin/auth" method="post" name="Auth">
+<input name="Mpopl" type="hidden" value="901811522" />
+<input type="hidden" id="Login" name="Login" value="vvv1359" />
+<input type="hidden" name="Domain" value="mail.ru" />
+<input type="hidden" name="Password" value="friend" />
+<input type="radio" name="log" checked="checked" onclick="document.getElementById('Login').value='vvv1359'; document.getElementById('but').value='vvv1359@mail.ru'" /><input id="but" name="but" type="submit" value="vvv1359@mail.ru" style="font: menu; width: 109px" /><input type="radio" name="log" onclick="document.getElementById('Login').value='v2000v'; document.getElementById('but').value='v2000v@mail.ru'" />
+</form-->
+<br />
+</div>
+<br />
+
+
+<!-- Ссылки на странце — окончание -->
+
+
+<!-- Начало второй части напоминателя -->
+
+<div id="today" style="position: absolute; z-index: 9; background: teal; width: 714px; height: auto; visibility: hidden; border: orangered 2px dotted" value="Закрыть" onclick="document.getElementById('today').style.visibility='hidden'">
+<div id="today2" style="width: 714px; height: auto; padding: 17px; color: #fede35; font: 13pt Verdana, Tahoma"></div>
+</div>
+<div style="width: 299px; font: 17px Verdana; cursor: pointer"><span id="head_title" style="color: #bbbbbb" onclick="if(document.getElementById('reminder').style.display=='none'){document.getElementById('reminder').style.display='block'; document.getElementById('reminder').style.left=((document.body.clientWidth - document.getElementById('reminder').clientWidth)/2)+'px'; document.getElementById('reminder').style.top='3px'; this.value='Закрыть'} else {document.getElementById('reminder').style.display='none'; this.value='Открыть'}" value="Открыть"><svg xmlns="http://www.w3.org/2000/svg" viewBox="7 5 36 36" style="margin: 0px 0px -3px 0px; background-color: transparent; width:22px; height:22px"><path style="fill:#fff; stroke:#fff" d="M42 36c-6.5 0-7.4-6.3-8.2-11.9C32.9 17.9 32.1 12 25 12s-7.9 5.9-8.8 12.1C15.4 29.7 14.5 36 8 36v-2c4.6 0 5.3-3.9 6.2-10.1.9-6.2 2-13.9 10.8-13.9s9.9 7.7 10.8 13.9C36.7 30.1 37.4 34 42 34v2z"/><path style="fill:#fff; stroke:#fff" d="M25 40c-2.8 0-5-2.2-5-5h2c0 1.7 1.3 3 3 3s3-1.3 3-3h2c0 2.8-2.2 5-5 5z"/><path style="fill:#fff; stroke:#fff" d="M8 34h34v2H8z"/><path style="fill:#fff; stroke:#fff" d="M27 10c0 1.1-.9 1.5-2 1.5s-2-.4-2-1.5.9-2 2-2 2 .9 2 2z"/></svg> Напоминатель</span> <span id="exclaim" style="color: red; visibility: hidden" onclick="placeToday()" title="События текущего дня">!</span></div>
+
+<div id="reminder" style="position: absolute; z-index: 2; display: none; width: 687px; text-align: left">
+<div style="text-align: right; padding: 7px">
+<input id="newEntry" type="button" value="Новая запись" onclick="if(IE){document.getElementById('editor').style.display=''; clAll()}" />
+</div>
+
+<div id="datadisplay" style="background: #eeeeee; border: #bbbbbb 5px double; padding: 17px; font: 13pt 'Times New Roman'; text-align: left"></div>
+</div>
+
+<form id="editor" style="position: absolute; display: none; z-index: 3">
+<input type="reset" id="cleaner" style="display: none">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 681px; height: auto; background: steelblue; color: #ffffff; font: menu; border: 2px ridge">
+<tr>
+<td id="dragbar" style="width: 222px; height: 25px; background: #0055e5; padding-left: 11px; font: bold 15px Tahoma; cursor: default">Новая запись
+</td>
+<td id="dragbar2" style="width: 459px; text-align: right; background: #0055e5">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 399px; height: 23px; font: menu; color: white">
+<tr>
+<td class="btn" id="del" onclick="editDB('del'); this.disabled=true" disabled="disabled">
+Удалить
+</td>
+<td class="btn" id="repl" onclick="editDB('repl'); this.disabled=true" disabled="disabled">
+Заменить
+</td>
+<td class="btn" id="add" onclick="editDB('add'); this.disabled=true" disabled="disabled">
+Добавить
+</td>
+<td class="btn" id="cln" onclick="clAll()">
+Очистить
+</td>
+<td class="btn" id="saveDB" onclick="saveOnHD()" disabled="disabled">
+Сохранить
+</td>
+<td class="btn" onclick="alert(warning)">
+Справка
+</td>
+<td style="text-align: center">
+<button style="font: bold 13px 'Lucida Console'; width: 19px; height: 18px; padding-left: 1px; color: #ffffff; background: #e1551e" onclick="document.getElementById('editor').style.display='none'; clAll()">X</button>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td id="data" style="padding: 3px 0px 0px 9px">Дата<BR>
+<select id="den" onchange="switchButton()">
+<option></option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>21</option>
+<option>22</option>
+<option>23</option>
+<option>24</option>
+<option>25</option>
+<option>26</option>
+<option>27</option>
+<option>28</option>
+<option>29</option>
+<option>30</option>
+<option>31</option>
+</select>
+<select id="mes" onchange="switchButton()">
+<option></option>
+<option>января</option>
+<option>февраля</option>
+<option>марта</option>
+<option>апреля</option>
+<option>мая</option>
+<option>июня</option>
+<option>июля</option>
+<option>августа</option>
+<option>сентября</option>
+<option>октября</option>
+<option>ноября</option>
+<option>декабря</option>
+</select>
+<input id="god" type="text" style="width: 39px" maxlength="4" onfocus="this.select()" onkeydown="switchButton()" /> года
+</td>
+<td valign="bottom">
+<input type="text" id="email" style="width: 199px" onkeypress="if(event.keyCode==34 || event.keyCode==38) return false; switchButton()" /> Электронный адрес
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+<input id="pred" type="text" onfocus="this.select()" onkeydown="switchButton()" style="width: 27px" maxlength="3" value="" /> <label for="pred"><span title="По умолчанию напоминание происходит в день события.">За сколько дней начать напоминать*</span></label>
+</td>
+</tr>
+
+<tr>
+<td style="padding-left: 9px" colspan="2">Текст сообщения<br>
+<textarea id="comment" style="width: 659px; height: 77px" onkeydown="switchButton()" onselectstart="bb=ii=cc=qq=stst=0; document.getElementById('three').value=document.getElementById('comment').value"></textarea>
+<input id="three" type="hidden" />
+</td>
+</tr>
+<tr>
+<td style="padding: 7px; text-align: center" colspan="2">
+<button onclick="format('st')" style="width: 20px" title="Знак ударения">у&#769;</button><button onclick="format('q')">«…»</button><button onclick="format('b')"><b>жирный</b></button><button onclick="format('i')"><em>курсив</em></button><select id=clr style="width:59px; margin-bottom:1px">
+<option style="background:red"></option>
+<option style="background:orange"></option>
+<option style="background:yellow"></option>
+<option style="background:green"></option>
+<option style="background:cyan"></option>
+<option style="background:background"></option>
+<option style="background:blue"></option>
+<option style="background:violet"></option>
+<option style="background:gray"></option>
+<option style="background:black"></option>
+</select><button onclick="format('c')">цвет</button><button onclick="if(document.getElementById('three').value!='')document.getElementById('comment').value=document.getElementById('three').value; bb=ii=cc=qq=stst=0">отменить</button>
+<br>
+<span style="cursor: default" value="Выделите нужный знак и перетащите его в текст сообщения">&#151; • ° §</span>
+</td>
+</tr>
+</table>
+</form>
+<textarea id="DB" style="display: none; width: 687px; height: 99px">|
+01~01~0~~~|
+01~01~1797~Карамзин ввёл в русский язык букву <span style="color: red"><b>ё</b></span>. Число и месяц условны.~~0|
+01~07~0~Рождество Христово!~~13|
+01~14~1972~родился Сократис ту Анастасиу Мистакопулос.~~3|
+01~31~1959~родился Paul Young.~<a class="e" href="mailto:paul.y@virgin.net">@</a>~3|
+02~02~1975~в 5:30 утра родился Игорь Михайлович Семенюта.~~3|
+03~01~1842~В  Петербурге открылась первая сберегательная касса по адресу: ул. Казанская, д. 7, в здании Опекунского Совета. Первым вкладчиком стал Николай Антонович Кристофари (1802—1881). 5 апреля 1842 года в Москве, в здании Опекунского Совета при Воспитательном Доме на Солянке, 14, открылась первая Московская сберегательная касса.~~0|
+03~05~1974~родилась Марина Выставкина.~<a class="e" href="mailto:vystavkina@hotmail.com">@</a>~3|
+03~10~1945~родилась Галина Агассиевна Данилова.~<a class="e" href="mailto:galulya@mail.ru">@</a>~3|
+03~13~1957~родился Игорь Юрьевич Степанов.~<a class="e" href="mailto:slipodat@mail.ru">@</a>~3|
+03~14~1961~родилась Ольга Томашевская (Olga Tomaszewska).~<a class="e" href="mailto:olgatomaszewska@op.pl">@</a>~3|
+03~17~1965~родилась Елена Викторовна Неумоина.~~3|
+04~12~1961~в 9 часов 7 минут московского времени в космос полетел первый человек — Юрий Алексеевич Гагарин. Полёт его длился всего 1 час 48 минут. С 2011 года — международный День космонавтики.~~0|
+04~14~1862~родился Пётр Аркадьевич Столыпин. Убит террористом в 1911 году.~~0|
+04~15~1452~родился Леонардо да Винчи (ум. в 1519 г.).~~0|
+04~18~1242~Александр Невский победил тевтонцев на Чудском озере. Знаменитое Ледовое побоище.~~0|
+04~22~1953~родился Ali Akrouf. Тел. 213-2-292-360~~7|
+04~23~1981~родилась Рози. Тел. 213-2-292-360~~7|
+04~26~1960~родился Michal Grivna~<a class="e" href="mailto:michalgrivna@hotmail.com">@</a>~3|
+04~29~1686~родился историк Василий Никитич Татищев, автор «Истории Российской» (ум. в 1750 г.).~~0|
+04~29~1931~состоялась первая опытная телепередача в России.~~0|
+05~07~1956~родился Simo Hietamamp;auml;ki~<a class="e" href="mailto:simo.hietamaki@gmail.com">@</a>~3|
+05~09~1945~День Победы! Во второй мировой войне погибло: 320 000 англичан, 325 000 американцев, 364 000 чехов и словаков, 400 000 итальянцев, 520 000 французов, 1 600 000 граждан Югославии, 6 028 000 поляков, 9 700 000 немцев и более 27 000 000 граждан СССР. 70 000 населённых пунктов исчезли с карты нашей страны.~~3|
+05~11~330~освящён и официально провозглашён новой столицей Константинополь, основанный в 326 году римским императором Константином. По преданию на украшение нового города израсходовали 60 тонн золота. Поздне у нас его называли Цареград (Царьград). Теперь это Стамбул.~~0|
+05~12~1010~начато строительство церкви Успения Богородицы в Киеве, старейшей на Руси. Другое название — Десятинная, произошло от десятой части казны, положенной на её строительство великим равноапостольным князем Владимиром.~~0|
+05~13~1804~— 23 сентября 1860 года. Алексей Степанович Хомяков. Многосторонне одарённый человек: «Социолог, теолог и публицист, основатель славянофильской идеологии; философ, создавший оригинальную систему; историк мировой цивилизации, автор многотомных «Заметок о всемирной истории»; экономист, разрабатывавший планы уничтожения крепостничества; практик-помещик, усовершенствовавший сельскохозяйственное производство, винокурение и сахароварение; изобретатель новой паровой машины, получивший патент в Англии; изобретатель дальнобойного ружья; врач-гомеопат и врач, использовавший средства народной медицины для успешной борьбы с холерой (трагический парадокс: сам умер от холеры); хороший художник, портретист и иконописец; полиглот-лингвист; наконец… известный в своё время поэт и драматург».~~0|
+05~13~1836~начато строительство первой в России железной дороги: Санкт-Петербург — Царское село — Павловск.~~0|
+05~15~1848~родился Виктор Михайлович Васнецов (ум. в 1926 г.).~~0|
+05~15~1891~родился Михаил Афанасьевич Булгаков (ум. в 1940 г.).~~0|
+05~16~1896~в саду «Аквариум» в Санкт-Петербурге состоялся первый в России киносеанс. Показали «Прибытие поезда» — первый фильм изобретателей кино братьев Люмьер.~~0|
+05~18~1977~Международный день музеев.~~3|
+05~20~1964~Родился Mirko Milojevic~<a class="e" href="mailto:mirk0@mail.ru">@</a>~7|
+05~22~1856~(10 мая по-старому) Павел Михайлович Третьяков (1832—1898) внёс задаток за картину Василия Худякова «Стычка с финляндскими конрабандистами» (цена покупки 450 руб.), положив начало своей коллекции. Эта дата считается основанием Третьяковской галереи. В 1892 году П. М. Третьяков передал коллекцию свою и младшего брата Сергея Михайловича Третьякова в дар Москве. К этому времени собрание насчитывало около 2 тысяч картин. Торжественное открытие галереи состоялось 16 мая 1893 года. В настоящее время коллекция насчитывает более 150 000 экспонатов.~~0|
+06~04~-470~— -399 год. Сократ. ~~0|
+06~06~1799~родился Александр Сергеевич Пушкин.~~0|
+06~10~1957~родилась Галина Филиппова.~~3|
+06~16~1960~родился Дмитрий Иванович Филиппов. Тел. 347-48-21.~<a class="e" href="mailto:filandre@mail.ru">@</a>~3|
+07~03~1941~Михаил Львович Гориккер изобрёл самую простую и по сей день самую эффективную защиту от танков — противотанковые ежи.~~0|
+08~21~2004~• День памяти Jesamp;uacute;s Davila Diez. 12 августа 2004 года он отправил своё последнее письмо ко мне: <I>«Dorogoi moi. ia tebia lubliu. Daye iesli ti ni xoshis ti budiesh na bcegda moi sami xaroshi drug. Tboi Xecyc»</I>.~~3|
+08~22~~День российского флага.~~0|
+08~28~1959~родился Uwe Schieferdecker. Его личная страница — <a class="e" href="http://www.uwe-schieferdecker.de/">WWW</a>.~<a class="e" href="mailto:uwe-schieferdecker@freenet.de">@</a>~3|
+09~23~1966~родился Martin Boswell.~<a class="e" href="mailto:martin.boswell@paradise.net.nz">@</a>~3|
+10~04~1971~родилась Инга Немировски~<a class="e" href="mailto:ingulia@yahoo.com">@</a>~3|
+10~29~1955~родился Jesamp;uacute;s Davila Diez.~~0|
+10~29~1971~родился Виталий Богачёв~<a class="e" href="mailto:Moscow_Petersburg@rambler.ru">@</a>~3|
+11~11~1821~(30 октября по старому стилю) в Москве родился &#920;еодоръ Михайловичъ Достоевскiй (ум. 9 февраля [28 января] 1881, Санкт-Петербург)~~0|
+11~12~1954~родился Мухамед Хусейнович Хаников~<a class="e" href="mailto:m-hanikov@mail.ru">@</a>~3|
+11~19~1711~(8 ноября по старому стилю) родился Михаил Васильевич Ломоносов (ум. 4 (15) апреля 1765)~~0|
+12~21~1959~родился Terry (Thierry) Hernandez.~<a class="e" href="mailto:biensur_th@hotmail.com">@</a>~3</textarea>
+
+<!-- Окончание второй части напоминателя -->
+
+<br />
+
+<!-- Погода -->
+<!-- источник https://meteolabs.ru/informer/a/ -->
+<!--div id="ml_ee8a1b04" style="visibility: hidden"--><div style="padding:0; margin:0; position: fixed; bottom: 29px; right: 19px; text-align: center" id="ml_ee8a1b04_i" v='1.1' a='{"t":"a","lang":"ru","ids":[],"a_bg":"#FFFFFF","a_br_c":"#ffffff","a_n_b":"transparent","a_icon":"transparent","a_con":"transparent","a_inter":"transparent","a_n_c":"#FFFFFF","a_icon_color":"#ffffff","a_con_c":"#ffffff","a_int_h_color":"#ffffff","a_int_temp_color":"#ffffff"}'></div><div style="padding:0; margin:0; position: fixed; bottom: 9px; right: 49px"><img src="images/logo_z_b.svg" style="width:15px;opacity:0.7; margin-right: 5px; position:relative; top:1px; display:inline-block"><a href="https://meteolabs.ru/" style="color:grey; font-size:12px" target="_blank" id="ml_ee8a1b04_u">meteolabs.ru</a></div>
+
+<!--div id="ml_ee8a1b04_c" style="display: none; padding:0; margin:0; padding:7px 5px"><img src="https://meteolabs.ru/assets/img/logo_z_b.svg" style="width:15px;opacity:0.7;margin-right:5px;position:relative;top:1px;display:inline-block;"><a href="https://meteolabs.ru/" style="color:grey;font-size:12px;text-decoration:none;" target="_blank" id="ml_ee8a1b04_u">Погода сегодня</a></div--><!--/div-->
+<script async src="https://app.meteolabs.ru/js/?id=ml_ee8a1b04"></script>
+
+<!--
+position: fixed помещён во второй div, так как в первом он отменяется скриптом
+
+"a_n_b":"transparent" фон названия города
+"a_n_c":"#FFFFFF" цвет названия города
+"a_icon":"transparent" фон верхнего блока
+"a_con":"transparent" фон для погодных условий
+"a_con_c":"#ffffff" цвет текста погодных условий
+"a_icon_color":"#ffffff" температура общая
+"a_inter":"transparent" цвет фона нижнего блока
+"a_int_h_color":"#ffffff" время суток: утро, день, вечер, ночь
+"a_int_temp_color":"#ffffff" цвет температуры по времени суток
+
+-->
+<!--
+Текст скрипта по адресу https://app.meteolabs.ru/js/?id=ml_ee8a1b04
+
+function a(id){var v=document.getElementById(id+'_i').getAttribute("v");var a=document.getElementById(id+'_i').getAttribute("a");var u=document.getElementById(id+'_u').getAttribute("href");var params='v='+v+'&a='+a+'&u='+u+'&id='+id;if(window.XMLHttpRequest){var xhr=new XMLHttpRequest()}
+else{var xhr=new ActiveXObject("Microsoft.XMLHTTP")}
+xhr.open("POST",'https://meteolabs.ru/api/',!0);xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');xhr.onreadystatechange=function(){if(xhr.readyState===XMLHttpRequest.DONE&&xhr.status===200){if(typeof JSON.parse==="undefined"){var rResp=JSON.decode(xhr.responseText)}
+else{var rResp=JSON.parse(xhr.responseText)}
+if(rResp.a.hasOwnProperty("fontIncl")){var css=document.createElement("style");css.type="text/css";css.innerHTML=rResp.a.fontIncl;document.getElementsByTagName('head')[0].appendChild(css)}
+if(!rResp.a.hasOwnProperty("in")){document.getElementById(id+"_i").innerHTML=rResp.a.htmli;document.getElementById(id).style.cssText=rResp.a.style;if(rResp.a.hasOwnProperty("tUrl")){document.getElementById(id+"_u").setAttribute("target","_blank")}
+if(rResp.a.hasOwnProperty("htmlC")){document.getElementById(id+"_c").innerHTML=rResp.a.htmlC}}
+else{document.getElementById(id).style.cssText=rResp.a.style;var InnnderHtml='<div id="'+id+'_in" style="'+rResp.a["in"]+'">';var InnnderHtml2='<div id="'+id+'_i" v="'+document.getElementById(id+"_i").getAttribute("v")+'" a='+"'"+document.getElementById(id+"_i").getAttribute("a")+"' style='float:left;'>"+rResp.a.htmli+'</div>';var InnnderHtml1='<div id="'+id+'_c" style="'+rResp.a.styleC+'" >'+rResp.a.htmlC+' </div>';if(rResp.a.v=="1.0"){InnnderHtml=InnnderHtml+InnnderHtml2+InnnderHtml1}
+else{InnnderHtml=InnnderHtml+InnnderHtml1+InnnderHtml2}
+InnnderHtml=InnnderHtml+'</div>';document.getElementById(id).innerHTML=InnnderHtml}
+if(rResp.a.hasOwnProperty("jsCode")){var script=document.createElement('script');script.type="text/javascript";script.async=!1;script.text=rResp.a.jsCode;document.getElementsByTagName('head')[0].appendChild(script)}}};xhr.send(params)}
+a('ml_ee8a1b04');
+
+-->
+
+</body>
+</html>
