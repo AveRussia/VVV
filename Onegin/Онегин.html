@@ -13977,7 +13977,7 @@ let r2 = elem.getBoundingClientRect();
 var elemTop2 = `${r2.top}`;
 var elemLeft2 = `${r2.left}`;
 if (elemTop2 < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(elemTop2)+'px,  0) scale('+N+','+N+')';
-if (elemLeft2 < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(elemLeft2)+'px, '+countedPointY+',  0) scale('+N+','+N+')';
+if (elemLeft2 < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(elemLeft2*2)+'px, '+countedPointY+',  0) scale('+N+','+N+')';
 }, 1500);
 }
 
