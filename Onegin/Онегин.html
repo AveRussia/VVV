@@ -13971,11 +13971,13 @@ for (var i=0; i<document.styleSheets.length; i++)   {
 styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX + ',' +countedPointY + ', 0) scale('+N+','+N+')';
 
 elem.className = 'animatePicture';
-// Если высота открывшейся картинки больше высоты окна, картина смещается вниз до верхней границы окна
+// Если высота/ширина открывшейся картинки больше высоты/ширины окна, картина смещается вниз/вправо до верхней/левой границы окна
 setTimeout(function(){
 let r2 = elem.getBoundingClientRect();
 var elemTop2 = `${r2.top}`;
-if (elemTop2 < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(elemTop)+'px,  0) scale('+N+','+N+')';
+var elemLeft2 = `${r2.left}`;
+if (elemTop2 < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(elemTop2)+'px,  0) scale('+N+','+N+')';
+if (elemLeft2 < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(elemLeft2)*2+'px, '+countedPointY+',  0) scale('+N+','+N+')';
 }, 1500);
 }
 
