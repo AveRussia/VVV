@@ -13932,7 +13932,7 @@ comTT.outerHTML = '<div id="comTT"></div>';
 
 let prevPic = 0
 
-function placeToCenter(elem,N){
+function placeToCenter(elem,Ntimes){
 
 // Определяем индекс элемента img
 var pictures = document.querySelectorAll('IMG');
@@ -13950,8 +13950,8 @@ prevPic = currentPic
 
 if(even==true) {
 
-let r = elem.getBoundingClientRect();
-var elemLeft = `${r.left}`, elemTop = `${r.top}`;
+let elemRectangle = elem.getBoundingClientRect();
+var elemLeft = `${elemRectangle.left}`, elemTop = `${elemRectangle.top}`;
 
   var docWidth = document.documentElement.clientWidth,
       docHeight = document.documentElement.clientHeight;
@@ -13967,17 +13967,18 @@ for (var i=0; i<document.styleSheets.length; i++)   {
     styleBySelector[styleList[j].selectorText] = styleList[j].style;
  }
 
-// Только для открытия картинки с помощью scale
-styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX + ',' +countedPointY + ', 0) scale('+N+','+N+')';
+styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX + ',' +countedPointY + ', 0) scale('+Ntimes+','+Ntimes+')';
 
 elem.className = 'animatePicture';
+
 // Если высота/ширина открывшейся картинки больше высоты/ширины окна, картина смещается вниз/вправо до верхней/левой границы окна
 setTimeout(function(){
-let r2 = elem.getBoundingClientRect();
-var elemTop2 = `${r2.top}`;
-var elemLeft2 = `${r2.left}`;
-if (elemTop2 < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(elemTop2)+'px,  0) scale('+N+','+N+')';
-if (elemLeft2 < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(elemLeft2*2)+'px, '+countedPointY+',  0) scale('+N+','+N+')';
+let increasedElemRectangle = elem.getBoundingClientRect();
+var increasedElemTop = `${increasedElemRectangle.top}`;
+var increasedElemLeft = `${increasedElemRectangle.left}`;
+//	alert(Math.abs(increasedElemLeft));
+if (increasedElemTop < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(increasedElemTop*2)+'px,  0) scale('+Ntimes+','+Ntimes+')';
+if (increasedElemLeft < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(increasedElemLeft*2)+'px, '+countedPointY+',  0) scale('+Ntimes+','+Ntimes+')';
 }, 1500);
 }
 
