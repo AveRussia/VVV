@@ -13976,7 +13976,7 @@ setTimeout(function(){
 let increasedElemRectangle = elem.getBoundingClientRect();
 var increasedElemTop = `${increasedElemRectangle.top}`;
 var increasedElemLeft = `${increasedElemRectangle.left}`;
-//	alert(Math.abs(increasedElemLeft));
+	alert(increasedElemTop +' . '+ increasedElemLeft);
 if (increasedElemTop < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(increasedElemTop*2)+'px,  0) scale('+Ntimes+','+Ntimes+')';
 if (increasedElemLeft < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(increasedElemLeft*2)+'px, '+countedPointY+',  0) scale('+Ntimes+','+Ntimes+')';
 }, 1500);
