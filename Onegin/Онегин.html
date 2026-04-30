@@ -137,6 +137,7 @@ color: black;
 /* text-align: center; к figure применять нельзя */
 figure {
 position: relative;
+/*margin: 0 auto;*/
 }
 figcaption {
 font: 0.8rem sans-serif; color: gray; text-align: center;
@@ -147,13 +148,17 @@ cursor: zoom-in;
 position: relative;
 transition: all 1s ease-in-out;
 transform: translate3d(0, 0, 0) scale(1, 1);
+z-index: 1;
 }
 .animatePicture {
 cursor: zoom-out;
 position: absolute;
 transition: all 1s ease-in-out;
-transform: translate3d(100px, 100px, 0) scale(2, 2);
+transform: translate3d(0, 0, 0) scale(1, 1);
+top: 0px;
+left: 0px;
 object-fit: cover;
+z-index: 5;
 }
 
 /* Конец блока открытия комментариев и увеличения картинки */
@@ -425,7 +430,6 @@ font-size: 1.5rem;
 width: 759px;
 margin: 0 auto;
 font-size: 1.5rem;
-/*display: none;*/
 }
 
 </style>
@@ -1198,7 +1202,7 @@ Pétri de vanité il avait encore plus de cette espèce d'orgueil qui fait avoue
 Три дома на вечер зовут:
 Там будет бал, там детский праздник.
 Куда ж поскачет мой проказник?
-С кого начнет он? Всё равно:
+С кого начнёт он? Всё равно:
 Везде поспеть немудрено.
 <span title="Раньше допускалось употребление как «пока&#769;мест», так и «пока&#769;месть». Здесь и далее в тексте оставлена старая форма с мягким знаком.">Покаместь*</span> в утреннем уборе,
 Надев широкий <i><span class="data" onclick="showCom('c150','big')">боливар*</span></i>,<a href="#3"><sup><span title="К примечаниям">3</span></sup></a>
@@ -11776,7 +11780,7 @@ VIII —— <i>Странствие</i> Моск. Павл. 1829 Болд.
 
 <!-- Дополнительные комментарии --> 
 
-<div class="additionalComments" style="display: none">
+<div class="additionalComments">
 <br />
 <div id="c0">
 <div class="t">
@@ -13991,13 +13995,24 @@ setTimeout(function(){
 let increasedElemRectangle = elem.getBoundingClientRect();
 var increasedElemTop = `${increasedElemRectangle.top}`;
 var increasedElemLeft = `${increasedElemRectangle.left}`;
+var increasedElemWidth = `${increasedElemRectangle.width}`;
+var increasedElemHeight = `${increasedElemRectangle.height}`;
 
- if (increasedElemTop < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(increasedElemTop)+'px,  0) scale('+Ntimes+','+Ntimes+')';
 
-if (increasedElemLeft < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(increasedElemLeft*2)+'px, '+countedPointY+',  0) scale('+Ntimes+','+Ntimes+')';
+// if (increasedElemTop < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(increasedElemTop)+'px,  0) scale('+Ntimes+','+Ntimes+')';
+if (increasedElemTop < 0) styleBySelector['.animatePicture'].marginTop = (increasedElemHeight-docHeight)+'px';
 
-if (increasedElemLeft < 0 && increasedElemTop < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(increasedElemLeft*2)+'px, '+Math.abs(increasedElemTop)+'px,  0) scale('+Ntimes+','+Ntimes+')';
+// alert(increasedElemLeft +' — '+ docWidth +' — '+ `${increasedElemRectangle.width}`)
+// if (increasedElemLeft < 0) 	styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(increasedElemLeft)+'px, '+countedPointY+',  0) scale('+Ntimes+','+Ntimes+')';
+if (increasedElemLeft < 0) 	styleBySelector['.animatePicture'].marginLeft = (increasedElemWidth-docWidth)+'px';
 
+// if (increasedElemLeft < 0) 	styleBySelector['.animatePicture'].transform = 'translate3d('+(increasedElemWidth-docWidth)+'px, '+countedPointY+',  0) scale('+Ntimes+','+Ntimes+')';
+
+// if (increasedElemLeft < 0 && increasedElemTop < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(increasedElemLeft)+'px, '+Math.abs(increasedElemTop)+'px,  0) scale('+Ntimes+','+Ntimes+')';
+if (increasedElemLeft < 0 && increasedElemTop < 0) {
+styleBySelector['.animatePicture'].marginLeft = (increasedElemWidth-docWidth)+'px';
+styleBySelector['.animatePicture'].marginTop = (increasedElemHeight-docHeight)+'px';
+}
 }, 1500);
 }
 
