@@ -2150,7 +2150,7 @@ Pétri de vanité il avait encore plus de cette espèce d'orgueil qui fait avoue
 Ей шепчут: «Дуня, примечай!»
 Потом приносят и гитару:
 И запищит она (бог мой!):
-<a href="#12"><i><span title="К примечаниям">Приди в</span> <span title="Черто&#769;г – пышное, великолепное помещение или здание, дворец.">чертог*</span><span title="К примечаниям"> ко мне златой!..</span></i><sup>12</sup></a>
+<i>Приди в <span title="Черто&#769;г – пышное, великолепное помещение или здание, дворец.">чертог*</span> <a href="#12"><span title="К примечаниям">ко мне златой!..</span></i><sup>12</sup></a>
 
 			XIII
 
@@ -14003,18 +14003,18 @@ var increasedElemHeight = `${increasedElemRectangle.height}`;
 
 
 // if (increasedElemTop < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+countedPointX+', '+Math.abs(increasedElemTop)+'px,  0) scale('+Ntimes+','+Ntimes+')';
-if (increasedElemTop < 0) styleBySelector['.animatePicture'].marginTop = (increasedElemHeight-docHeight)+'px';
+if (increasedElemTop < 0) styleBySelector['.animatePicture'].marginTop = (increasedElemHeight-docHeight)/2+'px';
 
 // alert(increasedElemLeft +' — '+ docWidth +' — '+ `${increasedElemRectangle.width}`)
 // if (increasedElemLeft < 0) 	styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(increasedElemLeft)+'px, '+countedPointY+',  0) scale('+Ntimes+','+Ntimes+')';
-if (increasedElemLeft < 0) 	styleBySelector['.animatePicture'].marginLeft = (increasedElemWidth-docWidth)+'px';
+if (increasedElemLeft < 0) 	styleBySelector['.animatePicture'].marginLeft = (increasedElemWidth-docWidth)/2+'px';
 
 // if (increasedElemLeft < 0) 	styleBySelector['.animatePicture'].transform = 'translate3d('+(increasedElemWidth-docWidth)+'px, '+countedPointY+',  0) scale('+Ntimes+','+Ntimes+')';
 
 // if (increasedElemLeft < 0 && increasedElemTop < 0) styleBySelector['.animatePicture'].transform = 'translate3d('+Math.abs(increasedElemLeft)+'px, '+Math.abs(increasedElemTop)+'px,  0) scale('+Ntimes+','+Ntimes+')';
 if (increasedElemLeft < 0 && increasedElemTop < 0) {
-styleBySelector['.animatePicture'].marginLeft = (increasedElemWidth-docWidth)+'px';
-styleBySelector['.animatePicture'].marginTop = (increasedElemHeight-docHeight)+'px';
+styleBySelector['.animatePicture'].marginLeft = (increasedElemWidth-docWidth)/2+'px';
+styleBySelector['.animatePicture'].marginTop = (increasedElemHeight-docHeight)/2+'px';
 }
 }, 1500);
 }
