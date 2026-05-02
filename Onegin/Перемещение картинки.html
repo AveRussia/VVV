@@ -214,16 +214,28 @@ var increasedPicLeft = `${increasedPicRectangle.left}`;
 var increasedPicWidth = `${increasedPicRectangle.width}`;
 var increasedPicHeight = `${increasedPicRectangle.height}`;
 
-//alert(increasedPicLeft)
-
 if (increasedPicLeft < 0) {
-var percent = Math.round(((increasedPicWidth-docWidth)*100)/increasedPicWidth)+'%';
-
-pic.style.transformOrigin = percent+' 50%';
-// pic.style.marginLeft = (increasedPicWidth-docWidth)+'px';
+var percentW = Math.round(((increasedPicWidth-docWidth)*100)/increasedPicWidth)+'%';
+pic.style.transformOrigin = percentW+' 50%';
 pic.style.transform = 'translate3D('+(increasedPicWidth-docWidth)+'px, '+countedPointY+', 0) scale('+Ntimes+')';
 }
+
+if (increasedPicTop < 0) {
+var percentH = Math.round(((increasedPicHeight-docHeight)*100)/increasedPicHeight)+'%';
+pic.style.transformOrigin = '50% '+percentH;
+pic.style.transform = 'translate3D('+countedPointX+', '+(increasedPicHeight-docHeight)+'px, 0) scale('+Ntimes+')';
+}
+
+if (increasedPicLeft < 0 && increasedPicTop < 0) {
+var percentH = Math.round(((increasedPicHeight-docHeight)*100)/increasedPicHeight)+'%';
+pic.style.transformOrigin = percentW+' '+percentH;
+pic.style.transform = 'translate3D('+(increasedPicWidth-docWidth)+'px, '+(increasedPicHeight-docHeight)+'px, 0) scale('+Ntimes+')';
+}
+
 /*
+if (increasedPicLeft < 0) {
+pic.style.marginLeft = (increasedPicWidth-docwidth)+'px';
+}
 if (increasedPicTop < 0) {
 pic.style.marginTop = (increasedPicHeight-docHeight)+'px';
 }
@@ -239,7 +251,6 @@ pic.style.transformOrigin = '50% 50%';
 pic.style.zIndex = 1;
 pic.style.position = 'relative';
 pic.style.transform = 'scale(1)';
-//pic.style.width = picWidth+'px';
 //pic.style.marginLeft = 0+'px';
 //pic.style.marginTop = 0+'px';
 }
